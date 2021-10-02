@@ -30,11 +30,12 @@ array_relationships:
 select_permissions:
 - permission:
     columns:
-    - id
+    - acronym
     - created_at
-    - updated_at
-    - title
-    - tag_category_id
     - description
+    - id
+    - tag_category_id
+    - title
+    - updated_at
     filter: {}
   role: user

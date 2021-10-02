@@ -6812,6 +6812,7 @@ export type Subscription_RootTag_Category_By_PkArgs = {
 /** columns and relationships of "tag" */
 export type Tag = {
   __typename?: 'tag';
+  acronym?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   description?: Maybe<Scalars['String']>;
   /** An array relationship */
@@ -6964,6 +6965,7 @@ export type Tag_Bool_Exp = {
   _and?: Maybe<Array<Tag_Bool_Exp>>;
   _not?: Maybe<Tag_Bool_Exp>;
   _or?: Maybe<Array<Tag_Bool_Exp>>;
+  acronym?: Maybe<String_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   description?: Maybe<String_Comparison_Exp>;
   equipment?: Maybe<Equipment_Bool_Exp>;
@@ -7220,6 +7222,7 @@ export type Tag_Inc_Input = {
 
 /** input type for inserting data into table "tag" */
 export type Tag_Insert_Input = {
+  acronym?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   equipment?: Maybe<Equipment_Arr_Rel_Insert_Input>;
@@ -7235,6 +7238,7 @@ export type Tag_Insert_Input = {
 /** aggregate max on columns */
 export type Tag_Max_Fields = {
   __typename?: 'tag_max_fields';
+  acronym?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
@@ -7245,6 +7249,7 @@ export type Tag_Max_Fields = {
 
 /** order by max() on columns of table "tag" */
 export type Tag_Max_Order_By = {
+  acronym?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   description?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -7256,6 +7261,7 @@ export type Tag_Max_Order_By = {
 /** aggregate min on columns */
 export type Tag_Min_Fields = {
   __typename?: 'tag_min_fields';
+  acronym?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
@@ -7266,6 +7272,7 @@ export type Tag_Min_Fields = {
 
 /** order by min() on columns of table "tag" */
 export type Tag_Min_Order_By = {
+  acronym?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   description?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -7299,6 +7306,7 @@ export type Tag_On_Conflict = {
 
 /** Ordering options when selecting data from "tag". */
 export type Tag_Order_By = {
+  acronym?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   description?: Maybe<Order_By>;
   equipment_aggregate?: Maybe<Equipment_Aggregate_Order_By>;
@@ -7319,6 +7327,8 @@ export type Tag_Pk_Columns_Input = {
 /** select columns of table "tag" */
 export enum Tag_Select_Column {
   /** column name */
+  Acronym = 'acronym',
+  /** column name */
   CreatedAt = 'created_at',
   /** column name */
   Description = 'description',
@@ -7334,6 +7344,7 @@ export enum Tag_Select_Column {
 
 /** input type for updating data in table "tag" */
 export type Tag_Set_Input = {
+  acronym?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
@@ -7396,6 +7407,8 @@ export type Tag_Sum_Order_By = {
 
 /** update columns of table "tag" */
 export enum Tag_Update_Column {
+  /** column name */
+  Acronym = 'acronym',
   /** column name */
   CreatedAt = 'created_at',
   /** column name */

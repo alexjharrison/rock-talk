@@ -221,7 +221,8 @@ CREATE TABLE public.tag (
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
     title text NOT NULL,
     tag_category_id integer NOT NULL,
-    description text
+    description text,
+    acronym text
 );
 CREATE TABLE public.tag_category (
     id integer NOT NULL,

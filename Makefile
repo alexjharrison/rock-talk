@@ -6,6 +6,9 @@ migration:
 	@$(HCLI) migrate create mission_tables --from-server
 	sudo chown -R `id -u`:`id -g` ./hasura
 
+seed:
+	@$(HCLI) seed create tables_seed --from-table auth.users 
+
 export:
 	@$(HCLI) metadata export
 	@$(DC) exec vue npm run generate
