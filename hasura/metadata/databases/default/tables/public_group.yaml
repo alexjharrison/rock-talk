@@ -1,0 +1,28 @@
+table:
+  name: group
+  schema: public
+array_relationships:
+- name: group_xref_users
+  using:
+    foreign_key_constraint_on:
+      column: group_id
+      table:
+        name: group_xref_users
+        schema: public
+- name: sensitive_posts
+  using:
+    foreign_key_constraint_on:
+      column: group_id
+      table:
+        name: sensitive_post
+        schema: public
+select_permissions:
+- permission:
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - title
+    - description
+    filter: {}
+  role: user

@@ -1,0 +1,19 @@
+table:
+  name: experiment_type
+  schema: public
+is_enum: true
+array_relationships:
+- name: experiments
+  using:
+    foreign_key_constraint_on:
+      column: type
+      table:
+        name: experiment
+        schema: public
+select_permissions:
+- permission:
+    columns:
+    - id
+    - description
+    filter: {}
+  role: user

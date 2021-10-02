@@ -1,0 +1,98 @@
+table:
+  name: post
+  schema: public
+object_relationships:
+- name: file
+  using:
+    foreign_key_constraint_on: file_id
+- name: related_post
+  using:
+    manual_configuration:
+      column_mapping:
+        related_post_id: id
+      insertion_order: null
+      remote_table:
+        name: post
+        schema: public
+- name: user
+  using:
+    foreign_key_constraint_on: user_id
+array_relationships:
+- name: meta_fields
+  using:
+    foreign_key_constraint_on:
+      column: post_id
+      table:
+        name: meta_field
+        schema: public
+- name: post_tags
+  using:
+    foreign_key_constraint_on:
+      column: post_id
+      table:
+        name: post_tags
+        schema: public
+- name: posts
+  using:
+    foreign_key_constraint_on:
+      column: related_post_id
+      table:
+        name: post
+        schema: public
+- name: sensitive_posts
+  using:
+    foreign_key_constraint_on:
+      column: post_id
+      table:
+        name: sensitive_post
+        schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - text
+    - related_post_id
+    - file_id
+    - user_id
+    - is_locked
+    set:
+      user_id: x-hasura-User-Id
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - text
+    - related_post_id
+    - file_id
+    - user_id
+    - is_locked
+    filter:
+      sensitive_posts:
+        group:
+          group_xref_users:
+            user_id:
+              _eq: X-Hasura-User-Id
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - is_locked
+    - id
+    - related_post_id
+    - user_id
+    - text
+    - created_at
+    - updated_at
+    - file_id
+    filter:
+      user_id:
+        _eq: X-Hasura-User-Id
+  role: user

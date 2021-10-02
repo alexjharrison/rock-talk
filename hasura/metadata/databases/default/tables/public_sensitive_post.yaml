@@ -1,0 +1,48 @@
+table:
+  name: sensitive_post
+  schema: public
+object_relationships:
+- name: group
+  using:
+    foreign_key_constraint_on: group_id
+- name: post
+  using:
+    foreign_key_constraint_on: post_id
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      post:
+        user_id:
+          _eq: X-Hasura-User-Id
+    columns:
+    - id
+    - post_id
+    - group_id
+    - created_at
+    - updated_at
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - id
+    - post_id
+    - group_id
+    - created_at
+    - updated_at
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - group_id
+    - id
+    - post_id
+    - created_at
+    - updated_at
+    filter:
+      post:
+        user_id:
+          _eq: X-Hasura-User-Id
+  role: user

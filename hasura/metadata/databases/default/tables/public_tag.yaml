@@ -1,0 +1,40 @@
+table:
+  name: tag
+  schema: public
+object_relationships:
+- name: tag_category
+  using:
+    foreign_key_constraint_on: tag_category_id
+array_relationships:
+- name: equipment
+  using:
+    foreign_key_constraint_on:
+      column: tag_id
+      table:
+        name: equipment
+        schema: public
+- name: experiments
+  using:
+    foreign_key_constraint_on:
+      column: tag_id
+      table:
+        name: experiment
+        schema: public
+- name: post_tags
+  using:
+    foreign_key_constraint_on:
+      column: tag_id
+      table:
+        name: post_tags
+        schema: public
+select_permissions:
+- permission:
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - title
+    - tag_category_id
+    - description
+    filter: {}
+  role: user

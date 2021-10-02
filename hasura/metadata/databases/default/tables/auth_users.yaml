@@ -1,6 +1,16 @@
 table:
   name: users
   schema: auth
+array_relationships:
+- name: groups
+  using:
+    manual_configuration:
+      column_mapping:
+        id: user_id
+      insertion_order: null
+      remote_table:
+        name: group_xref_users
+        schema: public
 select_permissions:
 - permission:
     columns:

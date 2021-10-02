@@ -11,18 +11,22 @@ object_relationships:
       remote_table:
         name: users
         schema: auth
+array_relationships:
+- name: missions
+  using:
+    foreign_key_constraint_on:
+      column: image_id
+      table:
+        name: mission
+        schema: public
+- name: posts
+  using:
+    foreign_key_constraint_on:
+      column: file_id
+      table:
+        name: post
+        schema: public
 select_permissions:
-- permission:
-    columns:
-    - filesize
-    - uploaded_by
-    - filename
-    - mimetype
-    - created_at
-    - updated_at
-    - id
-    filter: {}
-  role: public
 - permission:
     columns:
     - id

@@ -1,0 +1,48 @@
+table:
+  name: post_tags
+  schema: public
+object_relationships:
+- name: post
+  using:
+    foreign_key_constraint_on: post_id
+- name: tag
+  using:
+    foreign_key_constraint_on: tag_id
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      post:
+        user_id:
+          _eq: X-Hasura-User-Id
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - post_id
+    - tag_id
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - post_id
+    - tag_id
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - id
+    - post_id
+    - tag_id
+    - created_at
+    - updated_at
+    filter:
+      post:
+        user_id:
+          _eq: X-Hasura-User-Id
+  role: user

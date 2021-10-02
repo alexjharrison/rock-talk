@@ -1,0 +1,33 @@
+table:
+  name: meta_field
+  schema: public
+object_relationships:
+- name: meta_key
+  using:
+    foreign_key_constraint_on: meta_key_id
+- name: post
+  using:
+    foreign_key_constraint_on: post_id
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - meta_key_id
+    - post_id
+    - value
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - meta_key_id
+    - post_id
+    - value
+    filter: {}
+  role: user

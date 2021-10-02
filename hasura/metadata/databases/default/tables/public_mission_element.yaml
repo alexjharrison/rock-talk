@@ -1,0 +1,21 @@
+table:
+  name: mission_element
+  schema: public
+array_relationships:
+- name: mission_element_components_functions
+  using:
+    foreign_key_constraint_on:
+      column: mission_element_id
+      table:
+        name: mission_element_components_functions
+        schema: public
+select_permissions:
+- permission:
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - title
+    - description
+    filter: {}
+  role: user

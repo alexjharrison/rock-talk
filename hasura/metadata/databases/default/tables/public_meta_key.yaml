@@ -1,0 +1,25 @@
+table:
+  name: meta_key
+  schema: public
+object_relationships:
+- name: mission
+  using:
+    foreign_key_constraint_on: mission_id
+array_relationships:
+- name: meta_fields
+  using:
+    foreign_key_constraint_on:
+      column: meta_key_id
+      table:
+        name: meta_field
+        schema: public
+select_permissions:
+- permission:
+    columns:
+    - created_at
+    - id
+    - mission_id
+    - title
+    - updated_at
+    filter: {}
+  role: user
