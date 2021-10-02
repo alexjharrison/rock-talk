@@ -3,11 +3,29 @@ HCLI=$(DC) exec hasura hasura-cli
 
 
 migration: 
-	@$(HCLI) migrate create mission_tables --from-server
+	@$(HCLI) migrate create mission_tables --from-server --database-name default
 	sudo chown -R `id -u`:`id -g` ./hasura
 
 seed:
-	@$(HCLI) seed create tables_seed --from-table auth.users 
+	@$(HCLI) seed create tables_seed \
+		--database-name default \
+		--from-table auth.users \
+		--from-table equipment \
+		--from-table experiment \
+		--from-table experiment_type \
+		--from-table file \
+		--from-table group \
+		--from-table group_xref_users \
+		--from-table meta_field \
+		--from-table meta_key \
+		--from-table mission \
+		--from-table mission_element \
+		--from-table mission_element_components_functions \
+		--from-table post \
+		--from-table post_tags \
+		--from-table sensitive_post \
+		--from-table tag \
+		--from-table tag_category 
 
 export:
 	@$(HCLI) metadata export
