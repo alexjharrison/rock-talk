@@ -1,0 +1,16 @@
+:3000
+
+handle_path /api/* {
+    reverse_proxy hasura:8080
+}
+
+handle /files/* {
+    reverse_proxy express:8000
+}
+
+handle {
+    root * /srv
+    encode gzip
+    try_files {path} /index.html
+    file_server
+}
