@@ -32,6 +32,7 @@ migrate-seed:
 	rm -rf hasura/seeds/default
 	make migration
 	make seed
+	make export
 
 export:
 	@$(HCLI) metadata export
