@@ -3,7 +3,7 @@ HCLI=$(DC) exec hasura hasura-cli
 
 
 migration: 
-	@$(HCLI) migrate create mission_tables --from-server --database-name default
+	@$(HCLI) migrate create init --from-server --database-name default --schema auth,public
 	sudo chown -R `id -u`:`id -g` ./hasura
 
 seed:

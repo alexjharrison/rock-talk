@@ -1,4 +1,16 @@
 SET check_function_bodies = false;
+CREATE SCHEMA auth;
+CREATE FUNCTION auth.set_current_timestamp_updated_at() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  _new record;
+BEGIN
+  _new := NEW;
+  _new."updated_at" = NOW();
+  RETURN _new;
+END;
+$$;
 CREATE FUNCTION public.set_current_timestamp_updated_at() RETURNS trigger
     LANGUAGE plpgsql
     AS $$
@@ -10,6 +22,21 @@ BEGIN
   RETURN _new;
 END;
 $$;
+CREATE TABLE auth.users (
+    id integer NOT NULL,
+    first_name character varying(256) NOT NULL,
+    last_name character varying(256) NOT NULL,
+    email character varying(512) NOT NULL,
+    encrypted_password character varying(512) NOT NULL
+);
+CREATE SEQUENCE auth.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+ALTER SEQUENCE auth.users_id_seq OWNED BY auth.users.id;
 CREATE TABLE public.equipment (
     id integer NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
@@ -246,6 +273,7 @@ CREATE SEQUENCE public.tag_id_seq
     NO MAXVALUE
     CACHE 1;
 ALTER SEQUENCE public.tag_id_seq OWNED BY public.tag.id;
+ALTER TABLE ONLY auth.users ALTER COLUMN id SET DEFAULT nextval('auth.users_id_seq'::regclass);
 ALTER TABLE ONLY public.equipment ALTER COLUMN id SET DEFAULT nextval('public.equipment_id_seq'::regclass);
 ALTER TABLE ONLY public.experiment ALTER COLUMN id SET DEFAULT nextval('public.experiments_id_seq'::regclass);
 ALTER TABLE ONLY public."group" ALTER COLUMN id SET DEFAULT nextval('public.group_id_seq'::regclass);
@@ -260,6 +288,12 @@ ALTER TABLE ONLY public.post_tags ALTER COLUMN id SET DEFAULT nextval('public.po
 ALTER TABLE ONLY public.sensitive_post ALTER COLUMN id SET DEFAULT nextval('public.sensitive_post_id_seq'::regclass);
 ALTER TABLE ONLY public.tag ALTER COLUMN id SET DEFAULT nextval('public.tag_id_seq'::regclass);
 ALTER TABLE ONLY public.tag_category ALTER COLUMN id SET DEFAULT nextval('public.tag_category_id_seq'::regclass);
+ALTER TABLE ONLY auth.users
+    ADD CONSTRAINT users_email_key UNIQUE (email);
+ALTER TABLE ONLY auth.users
+    ADD CONSTRAINT users_encrypted_password_key UNIQUE (encrypted_password);
+ALTER TABLE ONLY auth.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.equipment
     ADD CONSTRAINT equipment_pkey PRIMARY KEY (id);
 ALTER TABLE ONLY public.experiment_type
