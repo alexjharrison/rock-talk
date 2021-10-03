@@ -105,6 +105,11 @@ fragment postFields on post {
   }
   text
   user_id
+  user {
+    id
+    first_name
+    last_name
+  }
   updated_at
   related_post_id
 }

@@ -7,7 +7,7 @@ export const useCurrentPosts = () => {
 
   const { data: currentPosts } = usePostsStreamSubscription({
     variables: computed(() => ({
-      where: { user_id: { _eq: user.value?.id } },
+      // where: { user_id: { _eq: user.value?.id } },
       order_by: { created_at: Order_By.Asc },
     })),
   });
