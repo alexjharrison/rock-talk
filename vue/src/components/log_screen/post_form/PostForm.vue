@@ -10,7 +10,7 @@
         cols="60"
         class="mb-0"
       /><br />
-      <div class="flex">
+      <div class="flex align-items-end">
         <div class="flex flex-column">
           <label for="post-created-at">Post Created At</label>
           <Calendar
@@ -21,29 +21,36 @@
             :show-button-bar="true"
           />
         </div>
+        <FieldAdder
+          @add:tag="object.post_tags?.data.push({ tag_id: $event })"
+        />
       </div>
 
       <p-button
         type="submit"
         label="submit"
-        class="p-button-sm mt-1 align-self-end"
+        class="mt-1 p-button-sm align-self-end"
       />
     </form>
   </section>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import Textarea from "primevue/textarea";
 import Calendar from "primevue/calendar";
 import { Post_Insert_Input, useCreatePostMutation } from "../../../api";
 import { useToast } from "primevue/usetoast";
+import FieldAdder from "./FieldAdder.vue";
 
 const toaster = useToast();
 const isEditing = ref(false);
 const { executeMutation } = useCreatePostMutation();
 
-const object = ref<Post_Insert_Input>({ created_at: new Date() });
+const object = ref<Post_Insert_Input>({
+  created_at: new Date(),
+  post_tags: { data: [] },
+});
 
 const handleSubmit = async () => {
   const { data, error } = await executeMutation({ object: object.value });

@@ -1,0 +1,27 @@
+query Meta(
+  $distinct_on: [meta_key_select_column!]
+  $limit: Int
+  $where: meta_key_bool_exp
+  $order_by: [meta_key_order_by!]
+) {
+  meta_key(
+    distinct_on: $distinct_on
+    limit: $limit
+    where: $where
+    order_by: $order_by
+  ) {
+    created_at
+    id
+    mission_id
+    title
+    updated_at
+    meta_fields {
+      created_at
+      id
+      meta_key_id
+      post_id
+      updated_at
+      value
+    }
+  }
+}
