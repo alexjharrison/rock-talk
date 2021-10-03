@@ -36,7 +36,7 @@ export:
 db-reset:
 	@$(DC) down
 	@$(DC) -f docker-compose.prod.yml down
-	docker volume rm hackathon-starter_db_data
+	docker volume rm rock-talk_db_data
 	@$(DC) up -d
 
 rebuild:
