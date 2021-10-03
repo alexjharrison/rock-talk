@@ -1,0 +1,58 @@
+{
+  "id": 7,
+  "created_at": "2021-10-03T17:32:01.302338+00:00",
+  "is_locked": false,
+  "file": null,
+  "meta_fields": [
+    {
+      "created_at": "2021-10-03T17:35:40.617118+00:00",
+      "id": 2,
+      "meta_key_id": 1,
+      "post_id": 7,
+      "updated_at": "2021-10-03T17:35:40.617118+00:00",
+      "value": "Latitude: 3° 12' 43.2\" South, Longitude: 5° 12' 39.6\" West",
+      "meta_key": {
+        "created_at": "2021-10-03T17:33:23.19896+00:00",
+        "id": 1,
+        "mission_id": 1,
+        "title": "Coordinates",
+        "updated_at": "2021-10-03T17:33:23.19896+00:00"
+      }
+    }
+  ],
+  "post_tags": [
+    {
+      "tag": {
+        "acronym": "Hammer",
+        "created_at": "2021-10-03T05:02:16.499319+00:00",
+        "description": "This tool is used to break chips from rocks or to drive core tubes into the soil. It is designed to be used as a hoe for digging furrows when attached to an extension handle. ",
+        "id": 72,
+        "tag_category_id": 2,
+        "title": "Hammer, Heavy-weight",
+        "updated_at": "2021-10-03T17:39:33.479418+00:00",
+        "equipment": [
+          {
+            "created_at": "2021-10-03T02:25:09.914774+00:00",
+            "id": 52,
+            "image_url": "https://www.hq.nasa.gov/alsj/tools/judy34.jpg",
+            "manufacturer": "NASA, Johnson Space Center",
+            "serial_number": "5555",
+            "tag_id": 72,
+            "title": "Hammer, Heavy-weight",
+            "updated_at": "2021-10-03T17:38:59.53318+00:00",
+            "weight": 1315
+          }
+        ],
+        "experiments": [],
+        "mission_elements": []
+      },
+      "updated_at": "2021-10-03T17:37:35.510428+00:00",
+      "tag_id": 72
+    }
+  ],
+  "text": "EV 1 Good Hammer ",
+  "user_id": 3,
+  "updated_at": "2021-10-03T17:32:01.302338+00:00",
+  "related_post_id": null,
+  "related_post": null
+}

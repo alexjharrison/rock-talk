@@ -20,7 +20,12 @@
     </div>
     <div class="flex align-items-center" v-else>
       <router-link :to="{ name: 'Home' }">
-        <p-button label="Home" class="p-button-sm" />
+        <img
+          style="height: 3rem"
+          class="mr-4 mt-1"
+          alt="Rock Talk Logo"
+          src="../assets/logo2.svg"
+        />
       </router-link>
       <router-link :to="{ name: 'Login' }">
         <p-button label="Login" class="p-button-sm" />

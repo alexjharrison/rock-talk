@@ -69,6 +69,6 @@ watchEffect(() => {
   border-radius: 15px;
 }
 .scroll-panel {
-  height: 50vh;
+  height: 45vh;
 }
 </style>

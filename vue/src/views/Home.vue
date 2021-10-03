@@ -1,7 +1,7 @@
 <template>
   <div class="text-center">
     <img class="pl-8 mt-3" alt="Vue logo" src="../assets/logo_big.svg" />
-    <hello-world msg="Hello Vue 3 + TypeScript + Vite" />
+    <hello-world msg="Welcome to Rock Talk!" />
   </div>
 </template>
 
