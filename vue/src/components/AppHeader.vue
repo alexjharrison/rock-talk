@@ -27,6 +27,11 @@
           src="../assets/logo2.svg"
         />
       </router-link>
+      <form @submit.prevent="login">
+        <input type="text" class="hidden" v-model="formValues.email" />
+        <input type="text" class="hidden" v-model="formValues.password" />
+        <p-button label="Guest Login" type="submit" class="p-button-sm" />
+      </form>
       <router-link :to="{ name: 'Login' }">
         <p-button label="Login" class="p-button-sm" />
       </router-link>
@@ -40,7 +45,9 @@
 <script setup lang="ts">
 import { useAuth } from "../hooks/auth";
 
-const { logout, user, isLoggedIn } = useAuth();
+const { logout, login, user, isLoggedIn, formValues } = useAuth();
+formValues.email = "guest@nasa.gov";
+formValues.password = "password";
 </script>
 
 <style scoped lang="scss">

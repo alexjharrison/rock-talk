@@ -1,6 +1,10 @@
 SET check_function_bodies = false;
 INSERT INTO auth.users (id, first_name, last_name, email, encrypted_password) VALUES (2, 'Max', 'Longton', 'enriquelongton@gmail.com', '$2b$10$6PbfCUqOdP.boJ1MfDbVcetMPKVqmAbApN58PrnWd9FO8mAokHinO');
 INSERT INTO auth.users (id, first_name, last_name, email, encrypted_password) VALUES (3, 'Alex', 'Harrison', 'alexmon32@live.com', '$2b$10$0lfwN7h9c9o3jUtDQ6QEbO73twkpz/1CvTbedHdKiO/DK1JWifT0K');
+INSERT INTO auth.users (id, first_name, last_name, email, encrypted_password) VALUES (4, 'Guest', 'Person', 'guest@nasa.gov', '$2b$10$mE6Spc4hW4vJXQDyvO4qW.wfXQl1LJIzWleamQNKF7zycWaAoZ.Xa');
+INSERT INTO auth.users (id, first_name, last_name, email, encrypted_password) VALUES (5, 'Bob', 'Wing', 'bobwing@nasa.gov', '$2b$10$MRlUiczKtCilaJ1z.zBopO4tLx6rxdAhxvFaF.rOWeZUonEHY6ANS');
+INSERT INTO auth.users (id, first_name, last_name, email, encrypted_password) VALUES (6, 'Eva', 'Explora', 'evaexplora@nasa.gov', '$2b$10$waDNGud389ZPG5C84j8VlOqPhmk.0nqBalVM4Fj4YbRPk9cRebLie');
+INSERT INTO auth.users (id, first_name, last_name, email, encrypted_password) VALUES (7, 'Ally', 'Harrison', 'allisara@gmail.com', '$2b$10$XV2GyiCYpgdnzDXMGOkbZOfLx/sgl0qD6Oj7m/ng.S1hiEgmdr8q6');
 INSERT INTO public.tag_category (id, created_at, updated_at, title) VALUES (3, '2021-10-03 03:44:08.468248+00', '2021-10-03 03:44:08.468248+00', 'Mission Element');
 INSERT INTO public.tag_category (id, created_at, updated_at, title) VALUES (1, '2021-10-03 03:44:08.468248+00', '2021-10-03 04:58:26.674279+00', 'Experiment');
 INSERT INTO public.tag_category (id, created_at, updated_at, title) VALUES (2, '2021-10-03 03:44:08.468248+00', '2021-10-03 14:29:58.439995+00', 'Tool');
@@ -247,6 +251,9 @@ INSERT INTO public."group" (id, created_at, updated_at, title, description) VALU
 INSERT INTO public."group" (id, created_at, updated_at, title, description) VALUES (23, '2021-10-03 13:35:07.796689+00', '2021-10-03 13:35:07.796689+00', 'Crew Operations and Resources Engineer (CORE)', 'CORE or Crew Operations and Resources Engineer is SpaceX Crew Dragon 2 specific position that replaces CAPCOM and is the point person between Mission Control and crew on board the Dragon 2 spacecraft.');
 INSERT INTO public."group" (id, created_at, updated_at, title, description) VALUES (24, '2021-10-03 13:35:07.796689+00', '2021-10-03 13:35:07.796689+00', 'Researcher / Academic', 'RA or Researcher / Academic is a contributor from a university or from the private sector who is collaborating with NASA.');
 INSERT INTO public."group" (id, created_at, updated_at, title, description) VALUES (25, '2021-10-03 13:35:07.796689+00', '2021-10-03 13:35:07.796689+00', 'Administrator', 'The administrator role configures, starts, stops, and manages users.');
+INSERT INTO public."group" (id, created_at, updated_at, title, description) VALUES (26, '2021-10-03 22:25:54.653154+00', '2021-10-03 22:25:54.653154+00', 'EMU', 'EVA''s spacewalk responsibilities include monitoring operations of the astronauts'' spacesuits. The spacesuits are known as Extravehicular Mobility Units (EMUs). EVA is also responsible for keeping track of the spacewalkers'' scheduled tasks.');
+INSERT INTO public.group_xref_users (id, created_at, updated_at, group_id, user_id) VALUES (1, '2021-10-03 22:27:38.514091+00', '2021-10-03 22:27:38.514091+00', 26, 6);
+INSERT INTO public.group_xref_users (id, created_at, updated_at, group_id, user_id) VALUES (2, '2021-10-03 22:27:38.514091+00', '2021-10-03 22:27:38.514091+00', 26, 2);
 INSERT INTO public.mission (id, created_at, updated_at, start_date, end_date, title, image_id) VALUES (1, '2021-10-03 16:55:15.285621+00', '2021-10-03 16:55:37.927294+00', '2021-10-03 16:55:15.285621', '2021-11-03 16:55:15.285621', 'Artemis II', NULL);
 INSERT INTO public.meta_key (id, created_at, updated_at, title, mission_id) VALUES (2, '2021-10-03 16:55:48.637791+00', '2021-10-03 16:55:48.637791+00', 'Entry Topic', 1);
 INSERT INTO public.meta_key (id, created_at, updated_at, title, mission_id) VALUES (3, '2021-10-03 16:55:48.637791+00', '2021-10-03 16:55:48.637791+00', 'Sample Coordinates', 1);
@@ -276,11 +283,11 @@ INSERT INTO public.mission_element (id, created_at, updated_at, title, descripti
 INSERT INTO public.mission_element (id, created_at, updated_at, title, description, tag_id) VALUES (15, '2021-10-03 03:04:12.588489+00', '2021-10-03 05:11:40.764398+00', 'Habitable Mobility Platform', 'The Habitable Mobility Platform (HMP) will vastly expand the range of possible excursions and enable new science, resource prospecting, and exploration.  The HMP will be used for analogs of Mars surface activities on the Moon to reduce risk and optimize operations concepts.  The lunar HMP will be greatly leveraged for the Mars HMP.', 93);
 INSERT INTO public.post_tags (id, created_at, updated_at, post_id, tag_id) VALUES (1, '2021-10-03 17:37:35.510428+00', '2021-10-03 17:37:35.510428+00', 7, 72);
 INSERT INTO public.post_tags (id, created_at, updated_at, post_id, tag_id) VALUES (2, '2021-10-03 17:38:26.445442+00', '2021-10-03 17:38:26.445442+00', 8, 98);
-SELECT pg_catalog.setval('auth.users_id_seq', 3, true);
+SELECT pg_catalog.setval('auth.users_id_seq', 7, true);
 SELECT pg_catalog.setval('public.equipment_id_seq', 77, true);
 SELECT pg_catalog.setval('public.experiments_id_seq', 61, true);
-SELECT pg_catalog.setval('public.group_id_seq', 25, true);
-SELECT pg_catalog.setval('public.group_xref_users_id_seq', 1, false);
+SELECT pg_catalog.setval('public.group_id_seq', 26, true);
+SELECT pg_catalog.setval('public.group_xref_users_id_seq', 2, true);
 SELECT pg_catalog.setval('public.meta_field_id_seq', 2, true);
 SELECT pg_catalog.setval('public.meta_key_id_seq', 1, true);
 SELECT pg_catalog.setval('public.mission_elements_components_functions_id_seq', 1, false);
