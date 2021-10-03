@@ -29,6 +29,7 @@
   </section>
   <div class="px-3 py-1 mx-3 mt-3 border-1 border-primary panel-container">
     <ScrollPanel class="scroll-panel">
+      <Loading v-if="!currentPosts?.post" />
       <PostContent
         v-for="post in currentPosts?.post"
         :key="post.id"
@@ -46,6 +47,7 @@ import ScrollPanel from "primevue/scrollpanel";
 import AdvancedSearch from "./AdvancedSearch.vue";
 import { usePostsStreamSubscription } from "../../../api";
 import { useCurrentPosts } from "../../../hooks/posts";
+import Loading from "./Loading.vue";
 
 const searchInput = ref("");
 const isAdvancedShowing = ref(false);

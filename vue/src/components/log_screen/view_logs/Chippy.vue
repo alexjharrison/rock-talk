@@ -16,11 +16,6 @@ import { defineProps, onMounted } from "vue";
 import Chip from "primevue/chip";
 const props =
   defineProps<{ metakey?: string; value?: string; tagtitle?: string }>();
-
-onMounted(() => {
-  console.log(props.tagtitle);
-  console.log(typeof props.tagtitle == "undefined");
-});
 </script>
 
 <style lang="scss" scoped>
