@@ -24,6 +24,14 @@
         <FieldAdder
           @add:tag="object.post_tags?.data.push({ tag_id: $event })"
         />
+        <Chip
+          v-for="tag in tagChips"
+          :key="tag.id"
+          :label="tag.title"
+          removable
+          class="ml-1"
+          @remove="removeTag(tag.id)"
+        />
       </div>
 
       <p-button
@@ -36,10 +44,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import Textarea from "primevue/textarea";
 import Calendar from "primevue/calendar";
-import { Post_Insert_Input, useCreatePostMutation } from "../../../api";
+import Chip from "primevue/chip";
+import {
+  Post_Insert_Input,
+  useCreatePostMutation,
+  useTagsQuery,
+} from "../../../api";
 import { useToast } from "primevue/usetoast";
 import FieldAdder from "./FieldAdder.vue";
 
@@ -52,11 +65,35 @@ const object = ref<Post_Insert_Input>({
   post_tags: { data: [] },
 });
 
+const { data: tags } = useTagsQuery();
+const currentTagIds = computed(() =>
+  object.value.post_tags?.data.map(({ tag_id }) => tag_id)
+);
+const tagChips = computed(() =>
+  tags.value?.tag
+    .filter((tag) => currentTagIds.value?.includes(tag.id))
+    .map((tag) => ({
+      id: tag.id,
+      title: tag.title,
+    }))
+);
+
+const removeTag = (id: number) => {
+  if (object.value.post_tags?.data) {
+    object.value.post_tags.data = object.value.post_tags?.data.filter(
+      ({ tag_id }) => tag_id !== id
+    );
+  }
+};
+
 const handleSubmit = async () => {
   const { data, error } = await executeMutation({ object: object.value });
   if (data) {
     toaster.add({ summary: "Post Submitted", life: 5000, severity: "success" });
-    object.value = {};
+    object.value = {
+      created_at: new Date(),
+      post_tags: { data: [] },
+    };
   } else if (error) {
     toaster.add({
       summary: "Error Submitting Submitted",

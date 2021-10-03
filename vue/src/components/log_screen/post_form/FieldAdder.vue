@@ -15,12 +15,14 @@
     <Dropdown
       :options="firstDropdownOptions"
       v-model="firstSelectedOptionId"
+      class="mb-2"
       option-label="name"
       option-value="value"
       :filter="true"
       placeholder="Field"
       :showClear="true"
     ></Dropdown>
+    <br />
 
     <Dropdown
       v-if="firstSelectedOptionId?.type === 'tag'"
@@ -105,6 +107,10 @@ const handleSubmit = () => {
       metaFieldValue: metaValue.value,
     });
   isPanelOpen.value = false;
+  selectedTagId.value =
+    metaValue.value =
+    firstSelectedOptionId.value =
+      undefined;
 };
 
 const { data: tagCategories } = useTagCategoriesQuery();

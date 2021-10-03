@@ -9010,6 +9010,16 @@ export type TagCategoriesQueryVariables = Exact<{
 
 export type TagCategoriesQuery = { __typename?: 'query_root', tag_category: Array<{ __typename?: 'tag_category', created_at: any, id: number, title: string, updated_at: any, tags: Array<{ __typename?: 'tag', acronym?: Maybe<string>, created_at: any, description?: Maybe<string>, id: number, tag_category_id: number, title: string, updated_at: any }> }> };
 
+export type TagsQueryVariables = Exact<{
+  distinct_on?: Maybe<Array<Tag_Select_Column> | Tag_Select_Column>;
+  limit?: Maybe<Scalars['Int']>;
+  where?: Maybe<Tag_Bool_Exp>;
+  order_by?: Maybe<Array<Tag_Order_By> | Tag_Order_By>;
+}>;
+
+
+export type TagsQuery = { __typename?: 'query_root', tag: Array<{ __typename?: 'tag', acronym?: Maybe<string>, created_at: any, description?: Maybe<string>, id: number, tag_category_id: number, title: string, updated_at: any }> };
+
 export type UserFieldsFragment = { __typename?: 'auth_users', id: number, first_name: string, last_name: string, email: string };
 
 export type UsersQueryVariables = Exact<{
@@ -9258,6 +9268,28 @@ export const TagCategoriesDocument = gql`
 
 export function useTagCategoriesQuery(options: Omit<Urql.UseQueryArgs<never, TagCategoriesQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<TagCategoriesQuery>({ query: TagCategoriesDocument, ...options });
+};
+export const TagsDocument = gql`
+    query Tags($distinct_on: [tag_select_column!], $limit: Int, $where: tag_bool_exp, $order_by: [tag_order_by!]) {
+  tag(
+    distinct_on: $distinct_on
+    limit: $limit
+    where: $where
+    order_by: $order_by
+  ) {
+    acronym
+    created_at
+    description
+    id
+    tag_category_id
+    title
+    updated_at
+  }
+}
+    `;
+
+export function useTagsQuery(options: Omit<Urql.UseQueryArgs<never, TagsQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<TagsQuery>({ query: TagsDocument, ...options });
 };
 export const UsersDocument = gql`
     query Users($distinct_on: [auth_users_select_column!], $limit: Int, $offset: Int, $order_by: [auth_users_order_by!], $where: auth_users_bool_exp) {

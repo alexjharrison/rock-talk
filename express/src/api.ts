@@ -9007,6 +9007,16 @@ export type TagCategoriesQueryVariables = Exact<{
 
 export type TagCategoriesQuery = { __typename?: 'query_root', tag_category: Array<{ __typename?: 'tag_category', created_at: any, id: number, title: string, updated_at: any, tags: Array<{ __typename?: 'tag', acronym?: Maybe<string>, created_at: any, description?: Maybe<string>, id: number, tag_category_id: number, title: string, updated_at: any }> }> };
 
+export type TagsQueryVariables = Exact<{
+  distinct_on?: Maybe<Array<Tag_Select_Column> | Tag_Select_Column>;
+  limit?: Maybe<Scalars['Int']>;
+  where?: Maybe<Tag_Bool_Exp>;
+  order_by?: Maybe<Array<Tag_Order_By> | Tag_Order_By>;
+}>;
+
+
+export type TagsQuery = { __typename?: 'query_root', tag: Array<{ __typename?: 'tag', acronym?: Maybe<string>, created_at: any, description?: Maybe<string>, id: number, tag_category_id: number, title: string, updated_at: any }> };
+
 export type UserFieldsFragment = { __typename?: 'auth_users', id: number, first_name: string, last_name: string, email: string };
 
 export type UsersQueryVariables = Exact<{

@@ -25,3 +25,25 @@ query TagCategories(
     }
   }
 }
+
+query Tags(
+  $distinct_on: [tag_select_column!]
+  $limit: Int
+  $where: tag_bool_exp
+  $order_by: [tag_order_by!]
+) {
+  tag(
+    distinct_on: $distinct_on
+    limit: $limit
+    where: $where
+    order_by: $order_by
+  ) {
+    acronym
+    created_at
+    description
+    id
+    tag_category_id
+    title
+    updated_at
+  }
+}
