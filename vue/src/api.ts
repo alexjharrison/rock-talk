@@ -731,8 +731,8 @@ export type Experiment = {
   experiment_type?: Maybe<Experiment_Type>;
   id: Scalars['Int'];
   /** An object relationship */
-  tag: Tag;
-  tag_id: Scalars['Int'];
+  tag?: Maybe<Tag>;
+  tag_id?: Maybe<Scalars['Int']>;
   title: Scalars['String'];
   type?: Maybe<Scalars['String']>;
   updated_at: Scalars['timestamptz'];
@@ -2934,6 +2934,9 @@ export type Mission_Element = {
   mission_element_components_functions: Array<Mission_Element_Components_Functions>;
   /** An aggregate relationship */
   mission_element_components_functions_aggregate: Mission_Element_Components_Functions_Aggregate;
+  /** An object relationship */
+  tag?: Maybe<Tag>;
+  tag_id?: Maybe<Scalars['Int']>;
   title: Scalars['String'];
   updated_at: Scalars['timestamptz'];
 };
@@ -2992,6 +2995,7 @@ export type Mission_Element_Aggregate_FieldsCountArgs = {
 export type Mission_Element_Avg_Fields = {
   __typename?: 'mission_element_avg_fields';
   id?: Maybe<Scalars['Float']>;
+  tag_id?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "mission_element". All fields are combined with a logical 'AND'. */
@@ -3003,6 +3007,8 @@ export type Mission_Element_Bool_Exp = {
   description?: Maybe<String_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   mission_element_components_functions?: Maybe<Mission_Element_Components_Functions_Bool_Exp>;
+  tag?: Maybe<Tag_Bool_Exp>;
+  tag_id?: Maybe<Int_Comparison_Exp>;
   title?: Maybe<String_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
@@ -3325,6 +3331,7 @@ export enum Mission_Element_Constraint {
 /** input type for incrementing numeric columns in table "mission_element" */
 export type Mission_Element_Inc_Input = {
   id?: Maybe<Scalars['Int']>;
+  tag_id?: Maybe<Scalars['Int']>;
 };
 
 /** input type for inserting data into table "mission_element" */
@@ -3333,6 +3340,8 @@ export type Mission_Element_Insert_Input = {
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
   mission_element_components_functions?: Maybe<Mission_Element_Components_Functions_Arr_Rel_Insert_Input>;
+  tag?: Maybe<Tag_Obj_Rel_Insert_Input>;
+  tag_id?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -3343,6 +3352,7 @@ export type Mission_Element_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
+  tag_id?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -3353,6 +3363,7 @@ export type Mission_Element_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
+  tag_id?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -3386,6 +3397,8 @@ export type Mission_Element_Order_By = {
   description?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   mission_element_components_functions_aggregate?: Maybe<Mission_Element_Components_Functions_Aggregate_Order_By>;
+  tag?: Maybe<Tag_Order_By>;
+  tag_id?: Maybe<Order_By>;
   title?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -3404,6 +3417,8 @@ export enum Mission_Element_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  TagId = 'tag_id',
+  /** column name */
   Title = 'title',
   /** column name */
   UpdatedAt = 'updated_at'
@@ -3414,6 +3429,7 @@ export type Mission_Element_Set_Input = {
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
+  tag_id?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -3422,24 +3438,28 @@ export type Mission_Element_Set_Input = {
 export type Mission_Element_Stddev_Fields = {
   __typename?: 'mission_element_stddev_fields';
   id?: Maybe<Scalars['Float']>;
+  tag_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_pop on columns */
 export type Mission_Element_Stddev_Pop_Fields = {
   __typename?: 'mission_element_stddev_pop_fields';
   id?: Maybe<Scalars['Float']>;
+  tag_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate stddev_samp on columns */
 export type Mission_Element_Stddev_Samp_Fields = {
   __typename?: 'mission_element_stddev_samp_fields';
   id?: Maybe<Scalars['Float']>;
+  tag_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate sum on columns */
 export type Mission_Element_Sum_Fields = {
   __typename?: 'mission_element_sum_fields';
   id?: Maybe<Scalars['Int']>;
+  tag_id?: Maybe<Scalars['Int']>;
 };
 
 /** update columns of table "mission_element" */
@@ -3451,6 +3471,8 @@ export enum Mission_Element_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  TagId = 'tag_id',
+  /** column name */
   Title = 'title',
   /** column name */
   UpdatedAt = 'updated_at'
@@ -3460,18 +3482,21 @@ export enum Mission_Element_Update_Column {
 export type Mission_Element_Var_Pop_Fields = {
   __typename?: 'mission_element_var_pop_fields';
   id?: Maybe<Scalars['Float']>;
+  tag_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate var_samp on columns */
 export type Mission_Element_Var_Samp_Fields = {
   __typename?: 'mission_element_var_samp_fields';
   id?: Maybe<Scalars['Float']>;
+  tag_id?: Maybe<Scalars['Float']>;
 };
 
 /** aggregate variance on columns */
 export type Mission_Element_Variance_Fields = {
   __typename?: 'mission_element_variance_fields';
   id?: Maybe<Scalars['Float']>;
+  tag_id?: Maybe<Scalars['Float']>;
 };
 
 /** input type for incrementing numeric columns in table "mission" */

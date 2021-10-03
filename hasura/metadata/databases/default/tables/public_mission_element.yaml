@@ -1,6 +1,10 @@
 table:
   name: mission_element
   schema: public
+object_relationships:
+- name: tag
+  using:
+    foreign_key_constraint_on: tag_id
 array_relationships:
 - name: mission_element_components_functions
   using:
