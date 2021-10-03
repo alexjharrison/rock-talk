@@ -1,9 +1,11 @@
 <template>
   <toast />
-  <app-header />
-  <main class="p-4 m-auto">
-    <router-view />
-  </main>
+  <div class="flex flex-column min-h-screen">
+    <app-header />
+    <main class="m-auto flex-grow-1 w-full">
+      <router-view />
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -26,6 +28,7 @@ body {
 
 main {
   max-width: 1440px;
+  margin: auto;
 }
 
 a {

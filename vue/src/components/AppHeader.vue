@@ -1,5 +1,8 @@
 <template>
-  <div id="app-header" class="border-bottom-1 border-primary py-2 px-4">
+  <div
+    id="app-header"
+    class="border-bottom-1 border-primary py-2 px-4 flex-grow-0"
+  >
     <div class="flex align-items-center" v-if="isLoggedIn">
       <router-link :to="{ name: 'Home' }">
         <p-button label="Home" class="p-button-sm" />
@@ -38,7 +41,7 @@ const { logout, user, isLoggedIn } = useAuth();
     margin: auto;
   }
 }
-.flex > * {
+.p-button {
   margin-right: 1em;
 }
 </style>
