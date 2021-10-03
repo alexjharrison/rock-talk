@@ -3,9 +3,7 @@
     <h1 class="mb-4">View Logs</h1>
     <div class="px-3">
       <div class="p-inputgroup">
-        <!-- <span class="p-inputgroup-addon">
-            </span> -->
-        <span class="p-float-label p-input-icon-left w-full">
+        <span class="w-full p-float-label p-input-icon-left">
           <i class="pi pi-search" />
           <InputText
             id="search"
@@ -22,19 +20,50 @@
         />
       </div>
     </div>
-    <!-- <AdvancedSearch /> -->
+    <AdvancedSearch v-if="isAdvancedShowing" />
   </section>
-  <PostContent />
+  <div class="px-3 py-1 mx-3 mt-3 border-1 border-primary panel-container">
+    <ScrollPanel class="scroll-panel">
+      <PostContent
+        v-for="post in currentPosts?.post"
+        :key="post.id"
+        :post="post"
+      />
+    </ScrollPanel>
+  </div>
 </template>
 
 <script setup lang="ts">
 import PostContent from "./PostContent.vue";
-import { ref } from "vue";
+import { ref, watchEffect, nextTick } from "vue";
 import InputText from "primevue/inputtext";
+import ScrollPanel from "primevue/scrollpanel";
 import AdvancedSearch from "./AdvancedSearch.vue";
+import { usePostsStreamSubscription } from "../../../api";
+import { useCurrentPosts } from "../../../hooks/posts";
 
 const searchInput = ref("");
 const isAdvancedShowing = ref(false);
+
+const { currentPosts } = useCurrentPosts();
+
+watchEffect(() => {
+  if (currentPosts.value) {
+    nextTick(() => {
+      const scrollPanel = document.querySelector(".p-scrollpanel-content");
+      const windowHeight = scrollPanel?.scrollHeight;
+
+      windowHeight && scrollPanel?.scrollTo(0, windowHeight);
+    });
+  }
+});
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.panel-container {
+  border-radius: 15px;
+}
+.scroll-panel {
+  height: 50vh;
+}
+</style>

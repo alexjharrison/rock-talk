@@ -1,13 +1,10 @@
-mutation CreatePost(
-  $object: post_insert_input!
-  $on_conflict: post_on_conflict
-) {
-  insert_post_one(object: $object, on_conflict: $on_conflict) {
+mutation CreatePost($object: post_insert_input!) {
+  insert_post_one(object: $object) {
     id
   }
 }
 
-query Posts(
+subscription PostsStream(
   $distinct_on: [post_select_column!]
   $limit: Int
   $where: post_bool_exp

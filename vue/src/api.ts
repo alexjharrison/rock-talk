@@ -8971,6 +8971,25 @@ export type FilesStreamSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 export type FilesStreamSubscription = { __typename?: 'subscription_root', file: Array<{ __typename?: 'file', created_at: any, filename: string, filesize: number, id: any, mimetype: string, updated_at: any, uploaded_by: number }> };
 
+export type CreatePostMutationVariables = Exact<{
+  object: Post_Insert_Input;
+}>;
+
+
+export type CreatePostMutation = { __typename?: 'mutation_root', insert_post_one?: Maybe<{ __typename?: 'post', id: number }> };
+
+export type PostsStreamSubscriptionVariables = Exact<{
+  distinct_on?: Maybe<Array<Post_Select_Column> | Post_Select_Column>;
+  limit?: Maybe<Scalars['Int']>;
+  where?: Maybe<Post_Bool_Exp>;
+  order_by?: Maybe<Array<Post_Order_By> | Post_Order_By>;
+}>;
+
+
+export type PostsStreamSubscription = { __typename?: 'subscription_root', post: Array<{ __typename?: 'post', id: number, created_at: any, is_locked: boolean, text?: Maybe<string>, user_id: number, updated_at: any, related_post_id?: Maybe<number>, related_post?: Maybe<{ __typename?: 'post', id: number, created_at: any, is_locked: boolean, text?: Maybe<string>, user_id: number, updated_at: any, related_post_id?: Maybe<number>, file?: Maybe<{ __typename?: 'file', created_at: any, filename: string, filesize: number, id: any, mimetype: string, updated_at: any, uploaded_by: number }>, meta_fields: Array<{ __typename?: 'meta_field', created_at: any, id: number, meta_key_id: number, post_id: number, updated_at: any, value: string, meta_key: { __typename?: 'meta_key', created_at: any, id: number, mission_id: number, title: string, updated_at: any } }>, post_tags: Array<{ __typename?: 'post_tags', updated_at: any, tag_id: number, tag: { __typename?: 'tag', acronym?: Maybe<string>, created_at: any, description?: Maybe<string>, id: number, tag_category_id: number, title: string, updated_at: any, equipment: Array<{ __typename?: 'equipment', created_at: any, id: number, image_url?: Maybe<string>, manufacturer?: Maybe<string>, serial_number?: Maybe<string>, tag_id?: Maybe<number>, title: string, updated_at: any, weight?: Maybe<any> }>, experiments: Array<{ __typename?: 'experiment', created_at: any, description?: Maybe<string>, id: number, tag_id?: Maybe<number>, title: string, type?: Maybe<string>, updated_at: any, experiment_type?: Maybe<{ __typename?: 'experiment_type', description?: Maybe<string>, id: string }> }>, mission_elements: Array<{ __typename?: 'mission_element', created_at: any, description?: Maybe<string>, id: number, tag_id?: Maybe<number>, title: string, updated_at: any, mission_element_components_functions: Array<{ __typename?: 'mission_element_components_functions', created_at: any, id: number, mission_element_id: number, title: string, updated_at: any }> }> } }> }>, file?: Maybe<{ __typename?: 'file', created_at: any, filename: string, filesize: number, id: any, mimetype: string, updated_at: any, uploaded_by: number }>, meta_fields: Array<{ __typename?: 'meta_field', created_at: any, id: number, meta_key_id: number, post_id: number, updated_at: any, value: string, meta_key: { __typename?: 'meta_key', created_at: any, id: number, mission_id: number, title: string, updated_at: any } }>, post_tags: Array<{ __typename?: 'post_tags', updated_at: any, tag_id: number, tag: { __typename?: 'tag', acronym?: Maybe<string>, created_at: any, description?: Maybe<string>, id: number, tag_category_id: number, title: string, updated_at: any, equipment: Array<{ __typename?: 'equipment', created_at: any, id: number, image_url?: Maybe<string>, manufacturer?: Maybe<string>, serial_number?: Maybe<string>, tag_id?: Maybe<number>, title: string, updated_at: any, weight?: Maybe<any> }>, experiments: Array<{ __typename?: 'experiment', created_at: any, description?: Maybe<string>, id: number, tag_id?: Maybe<number>, title: string, type?: Maybe<string>, updated_at: any, experiment_type?: Maybe<{ __typename?: 'experiment_type', description?: Maybe<string>, id: string }> }>, mission_elements: Array<{ __typename?: 'mission_element', created_at: any, description?: Maybe<string>, id: number, tag_id?: Maybe<number>, title: string, updated_at: any, mission_element_components_functions: Array<{ __typename?: 'mission_element_components_functions', created_at: any, id: number, mission_element_id: number, title: string, updated_at: any }> }> } }> }> };
+
+export type PostFieldsFragment = { __typename?: 'post', id: number, created_at: any, is_locked: boolean, text?: Maybe<string>, user_id: number, updated_at: any, related_post_id?: Maybe<number>, file?: Maybe<{ __typename?: 'file', created_at: any, filename: string, filesize: number, id: any, mimetype: string, updated_at: any, uploaded_by: number }>, meta_fields: Array<{ __typename?: 'meta_field', created_at: any, id: number, meta_key_id: number, post_id: number, updated_at: any, value: string, meta_key: { __typename?: 'meta_key', created_at: any, id: number, mission_id: number, title: string, updated_at: any } }>, post_tags: Array<{ __typename?: 'post_tags', updated_at: any, tag_id: number, tag: { __typename?: 'tag', acronym?: Maybe<string>, created_at: any, description?: Maybe<string>, id: number, tag_category_id: number, title: string, updated_at: any, equipment: Array<{ __typename?: 'equipment', created_at: any, id: number, image_url?: Maybe<string>, manufacturer?: Maybe<string>, serial_number?: Maybe<string>, tag_id?: Maybe<number>, title: string, updated_at: any, weight?: Maybe<any> }>, experiments: Array<{ __typename?: 'experiment', created_at: any, description?: Maybe<string>, id: number, tag_id?: Maybe<number>, title: string, type?: Maybe<string>, updated_at: any, experiment_type?: Maybe<{ __typename?: 'experiment_type', description?: Maybe<string>, id: string }> }>, mission_elements: Array<{ __typename?: 'mission_element', created_at: any, description?: Maybe<string>, id: number, tag_id?: Maybe<number>, title: string, updated_at: any, mission_element_components_functions: Array<{ __typename?: 'mission_element_components_functions', created_at: any, id: number, mission_element_id: number, title: string, updated_at: any }> }> } }> };
+
 export type UserFieldsFragment = { __typename?: 'auth_users', id: number, first_name: string, last_name: string, email: string };
 
 export type UsersQueryVariables = Exact<{
@@ -9004,6 +9023,93 @@ export const FileFragmentFragmentDoc = gql`
   mimetype
   updated_at
   uploaded_by
+}
+    `;
+export const PostFieldsFragmentDoc = gql`
+    fragment postFields on post {
+  id
+  created_at
+  is_locked
+  file {
+    created_at
+    filename
+    filesize
+    id
+    mimetype
+    updated_at
+    uploaded_by
+  }
+  meta_fields {
+    created_at
+    id
+    meta_key_id
+    post_id
+    updated_at
+    value
+    meta_key {
+      created_at
+      id
+      mission_id
+      title
+      updated_at
+    }
+  }
+  post_tags {
+    tag {
+      acronym
+      created_at
+      description
+      id
+      tag_category_id
+      title
+      updated_at
+      equipment {
+        created_at
+        id
+        image_url
+        manufacturer
+        serial_number
+        tag_id
+        title
+        updated_at
+        weight
+      }
+      experiments {
+        created_at
+        description
+        id
+        tag_id
+        title
+        type
+        updated_at
+        experiment_type {
+          description
+          id
+        }
+      }
+      mission_elements {
+        created_at
+        description
+        id
+        tag_id
+        title
+        updated_at
+        mission_element_components_functions {
+          created_at
+          id
+          mission_element_id
+          title
+          updated_at
+        }
+      }
+    }
+    updated_at
+    tag_id
+  }
+  text
+  user_id
+  updated_at
+  related_post_id
 }
     `;
 export const UserFieldsFragmentDoc = gql`
@@ -9046,6 +9152,36 @@ export const FilesStreamDocument = gql`
 
 export function useFilesStreamSubscription<R = FilesStreamSubscription>(options: Omit<Urql.UseSubscriptionArgs<never, FilesStreamSubscriptionVariables>, 'query'> = {}, handler?: Urql.SubscriptionHandlerArg<FilesStreamSubscription, R>) {
   return Urql.useSubscription<FilesStreamSubscription, R, FilesStreamSubscriptionVariables>({ query: FilesStreamDocument, ...options }, handler);
+};
+export const CreatePostDocument = gql`
+    mutation CreatePost($object: post_insert_input!) {
+  insert_post_one(object: $object) {
+    id
+  }
+}
+    `;
+
+export function useCreatePostMutation() {
+  return Urql.useMutation<CreatePostMutation, CreatePostMutationVariables>(CreatePostDocument);
+};
+export const PostsStreamDocument = gql`
+    subscription PostsStream($distinct_on: [post_select_column!], $limit: Int, $where: post_bool_exp, $order_by: [post_order_by!]) {
+  post(
+    distinct_on: $distinct_on
+    limit: $limit
+    where: $where
+    order_by: $order_by
+  ) {
+    ...postFields
+    related_post {
+      ...postFields
+    }
+  }
+}
+    ${PostFieldsFragmentDoc}`;
+
+export function usePostsStreamSubscription<R = PostsStreamSubscription>(options: Omit<Urql.UseSubscriptionArgs<never, PostsStreamSubscriptionVariables>, 'query'> = {}, handler?: Urql.SubscriptionHandlerArg<PostsStreamSubscription, R>) {
+  return Urql.useSubscription<PostsStreamSubscription, R, PostsStreamSubscriptionVariables>({ query: PostsStreamDocument, ...options }, handler);
 };
 export const UsersDocument = gql`
     query Users($distinct_on: [auth_users_select_column!], $limit: Int, $offset: Int, $order_by: [auth_users_order_by!], $where: auth_users_bool_exp) {
