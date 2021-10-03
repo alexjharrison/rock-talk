@@ -1,12 +1,17 @@
 <template>
   <div class="flex h-full">
     <Sidebar class="sidebar w-24rem flex-grow-1 w-full h-full" />
-    <div class="flex-grow-1 w-full">test</div>
+    <div class="flex-grow-1 w-full h-full">
+      <LogScreenList />
+      <PostForm />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import Sidebar from "./Sidebar.vue";
+import Sidebar from "./sidebar/Sidebar.vue";
+import LogScreenList from "./view_logs/LogScreenList.vue";
+import PostForm from "./post_form/PostForm.vue";
 </script>
 
 <style lang="scss" scoped>

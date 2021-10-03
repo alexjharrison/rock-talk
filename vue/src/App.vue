@@ -1,6 +1,6 @@
 <template>
   <toast />
-  <div class="flex flex-column min-h-screen">
+  <div class="flex flex-column h-screen">
     <app-header />
     <main class="m-auto flex-grow-1 w-full">
       <router-view />

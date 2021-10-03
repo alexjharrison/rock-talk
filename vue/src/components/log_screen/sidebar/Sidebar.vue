@@ -1,14 +1,14 @@
 <template>
-  <div class="h-full">
+  <aside class="h-full">
     <channel-shortcuts />
     <divider type="dashed" />
     <now-viewing />
-  </div>
+  </aside>
 </template>
 
 <script setup lang="ts">
-import ChannelShortcuts from "./sidebar/ChannelShortcuts.vue";
-import NowViewing from "./sidebar/NowViewing.vue";
+import ChannelShortcuts from "./ChannelShortcuts.vue";
+import NowViewing from "./NowViewing.vue";
 import Divider from "primevue/divider";
 </script>
 
