@@ -62,7 +62,7 @@ CREATE TABLE public.experiment (
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
     title text NOT NULL,
     description text,
-    tag_id integer NOT NULL,
+    tag_id integer,
     type text
 );
 CREATE TABLE public.experiment_type (
@@ -161,7 +161,8 @@ CREATE TABLE public.mission_element (
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
     title text NOT NULL,
-    description text
+    description text,
+    tag_id integer
 );
 CREATE TABLE public.mission_element_components_functions (
     id integer NOT NULL,
@@ -376,6 +377,8 @@ ALTER TABLE ONLY public.meta_key
     ADD CONSTRAINT meta_key_mission_id_fkey FOREIGN KEY (mission_id) REFERENCES public.mission(id);
 ALTER TABLE ONLY public.mission_element_components_functions
     ADD CONSTRAINT mission_element_components_functions_mission_element_id_fkey FOREIGN KEY (mission_element_id) REFERENCES public.mission_element(id);
+ALTER TABLE ONLY public.mission_element
+    ADD CONSTRAINT mission_element_tag_id_fkey FOREIGN KEY (tag_id) REFERENCES public.tag(id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 ALTER TABLE ONLY public.mission
     ADD CONSTRAINT mission_image_id_fkey FOREIGN KEY (image_id) REFERENCES public.file(id);
 ALTER TABLE ONLY public.post
