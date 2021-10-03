@@ -13,10 +13,15 @@
           />
           <label for="search">Search</label>
         </span>
-        <p-button
+        <!-- <p-button
           icon="pi pi-caret-down"
           label="Advanced"
           class="p-button-warning"
+        /> -->
+        <p-button
+          icon="pi pi-caret-down"
+          label="Advanced"
+          class="p-button-outlined p-button-primary pr-5"
         />
       </div>
     </div>

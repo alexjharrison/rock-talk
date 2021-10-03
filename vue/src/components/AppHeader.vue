@@ -5,7 +5,12 @@
   >
     <div class="flex align-items-center" v-if="isLoggedIn">
       <router-link :to="{ name: 'Home' }">
-        <p-button label="Home" class="p-button-sm" />
+        <img
+          style="height: 3rem"
+          class="mr-4 mt-1"
+          alt="Rock Talk Logo"
+          src="../assets/logo2.svg"
+        />
       </router-link>
       <router-link :to="{ name: 'Dashboard' }">
         <p-button label="Dashboard" class="p-button-sm" />

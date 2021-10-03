@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <img alt="Vue logo" src="../assets/logo.png" />
+    <img class="pl-8 mt-3" alt="Vue logo" src="../assets/logo_big.svg" />
     <hello-world msg="Hello Vue 3 + TypeScript + Vite" />
   </div>
 </template>
