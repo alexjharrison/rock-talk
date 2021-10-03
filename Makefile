@@ -27,6 +27,12 @@ seed:
 		--from-table tag \
 		--from-table tag_category 
 
+migrate-seed:
+	rm -rf hasura/migrations/default
+	rm -rf hasura/seeds/default
+	make migration
+	make seed
+
 export:
 	@$(HCLI) metadata export
 	@$(DC) exec vue npm run generate
@@ -38,6 +44,9 @@ db-reset:
 	@$(DC) -f docker-compose.prod.yml down
 	docker volume rm rock-talk_db_data
 	@$(DC) up -d
+	
+db-reseed:
+	@$(HCLI) seed apply --database-name default
 
 rebuild:
 	@$(DC) down
