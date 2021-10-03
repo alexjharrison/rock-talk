@@ -344,6 +344,950 @@ export type Auth_Users_Variance_Fields = {
   id?: Maybe<Scalars['Float']>;
 };
 
+/** columns and relationships of "channel" */
+export type Channel = {
+  __typename?: 'channel';
+  /** An array relationship */
+  channel_groups: Array<Channel_Groups>;
+  /** An aggregate relationship */
+  channel_groups_aggregate: Channel_Groups_Aggregate;
+  /** An array relationship */
+  channel_users: Array<Channel_Users>;
+  /** An aggregate relationship */
+  channel_users_aggregate: Channel_Users_Aggregate;
+  created_at: Scalars['timestamptz'];
+  id: Scalars['Int'];
+  /** An object relationship */
+  owner: Auth_Users;
+  owner_id: Scalars['Int'];
+  title: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "channel" */
+export type ChannelChannel_GroupsArgs = {
+  distinct_on?: Maybe<Array<Channel_Groups_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Groups_Order_By>>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
+};
+
+
+/** columns and relationships of "channel" */
+export type ChannelChannel_Groups_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Groups_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Groups_Order_By>>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
+};
+
+
+/** columns and relationships of "channel" */
+export type ChannelChannel_UsersArgs = {
+  distinct_on?: Maybe<Array<Channel_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Users_Order_By>>;
+  where?: Maybe<Channel_Users_Bool_Exp>;
+};
+
+
+/** columns and relationships of "channel" */
+export type ChannelChannel_Users_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Users_Order_By>>;
+  where?: Maybe<Channel_Users_Bool_Exp>;
+};
+
+/** aggregated selection of "channel" */
+export type Channel_Aggregate = {
+  __typename?: 'channel_aggregate';
+  aggregate?: Maybe<Channel_Aggregate_Fields>;
+  nodes: Array<Channel>;
+};
+
+/** aggregate fields of "channel" */
+export type Channel_Aggregate_Fields = {
+  __typename?: 'channel_aggregate_fields';
+  avg?: Maybe<Channel_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Channel_Max_Fields>;
+  min?: Maybe<Channel_Min_Fields>;
+  stddev?: Maybe<Channel_Stddev_Fields>;
+  stddev_pop?: Maybe<Channel_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Channel_Stddev_Samp_Fields>;
+  sum?: Maybe<Channel_Sum_Fields>;
+  var_pop?: Maybe<Channel_Var_Pop_Fields>;
+  var_samp?: Maybe<Channel_Var_Samp_Fields>;
+  variance?: Maybe<Channel_Variance_Fields>;
+};
+
+
+/** aggregate fields of "channel" */
+export type Channel_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Channel_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Channel_Avg_Fields = {
+  __typename?: 'channel_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "channel". All fields are combined with a logical 'AND'. */
+export type Channel_Bool_Exp = {
+  _and?: Maybe<Array<Channel_Bool_Exp>>;
+  _not?: Maybe<Channel_Bool_Exp>;
+  _or?: Maybe<Array<Channel_Bool_Exp>>;
+  channel_groups?: Maybe<Channel_Groups_Bool_Exp>;
+  channel_users?: Maybe<Channel_Users_Bool_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  owner?: Maybe<Auth_Users_Bool_Exp>;
+  owner_id?: Maybe<Int_Comparison_Exp>;
+  title?: Maybe<String_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "channel" */
+export enum Channel_Constraint {
+  /** unique or primary key constraint */
+  ChannelPkey = 'channel_pkey'
+}
+
+/** columns and relationships of "channel_groups" */
+export type Channel_Groups = {
+  __typename?: 'channel_groups';
+  /** An object relationship */
+  channel: Channel;
+  channel_id: Scalars['Int'];
+  created_at: Scalars['timestamptz'];
+  /** An object relationship */
+  group: Group;
+  group_id: Scalars['Int'];
+  id: Scalars['Int'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "channel_groups" */
+export type Channel_Groups_Aggregate = {
+  __typename?: 'channel_groups_aggregate';
+  aggregate?: Maybe<Channel_Groups_Aggregate_Fields>;
+  nodes: Array<Channel_Groups>;
+};
+
+/** aggregate fields of "channel_groups" */
+export type Channel_Groups_Aggregate_Fields = {
+  __typename?: 'channel_groups_aggregate_fields';
+  avg?: Maybe<Channel_Groups_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Channel_Groups_Max_Fields>;
+  min?: Maybe<Channel_Groups_Min_Fields>;
+  stddev?: Maybe<Channel_Groups_Stddev_Fields>;
+  stddev_pop?: Maybe<Channel_Groups_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Channel_Groups_Stddev_Samp_Fields>;
+  sum?: Maybe<Channel_Groups_Sum_Fields>;
+  var_pop?: Maybe<Channel_Groups_Var_Pop_Fields>;
+  var_samp?: Maybe<Channel_Groups_Var_Samp_Fields>;
+  variance?: Maybe<Channel_Groups_Variance_Fields>;
+};
+
+
+/** aggregate fields of "channel_groups" */
+export type Channel_Groups_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Channel_Groups_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "channel_groups" */
+export type Channel_Groups_Aggregate_Order_By = {
+  avg?: Maybe<Channel_Groups_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Channel_Groups_Max_Order_By>;
+  min?: Maybe<Channel_Groups_Min_Order_By>;
+  stddev?: Maybe<Channel_Groups_Stddev_Order_By>;
+  stddev_pop?: Maybe<Channel_Groups_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Channel_Groups_Stddev_Samp_Order_By>;
+  sum?: Maybe<Channel_Groups_Sum_Order_By>;
+  var_pop?: Maybe<Channel_Groups_Var_Pop_Order_By>;
+  var_samp?: Maybe<Channel_Groups_Var_Samp_Order_By>;
+  variance?: Maybe<Channel_Groups_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "channel_groups" */
+export type Channel_Groups_Arr_Rel_Insert_Input = {
+  data: Array<Channel_Groups_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Channel_Groups_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Channel_Groups_Avg_Fields = {
+  __typename?: 'channel_groups_avg_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  group_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "channel_groups" */
+export type Channel_Groups_Avg_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "channel_groups". All fields are combined with a logical 'AND'. */
+export type Channel_Groups_Bool_Exp = {
+  _and?: Maybe<Array<Channel_Groups_Bool_Exp>>;
+  _not?: Maybe<Channel_Groups_Bool_Exp>;
+  _or?: Maybe<Array<Channel_Groups_Bool_Exp>>;
+  channel?: Maybe<Channel_Bool_Exp>;
+  channel_id?: Maybe<Int_Comparison_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  group?: Maybe<Group_Bool_Exp>;
+  group_id?: Maybe<Int_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "channel_groups" */
+export enum Channel_Groups_Constraint {
+  /** unique or primary key constraint */
+  ChannelGroupsPkey = 'channel_groups_pkey'
+}
+
+/** input type for incrementing numeric columns in table "channel_groups" */
+export type Channel_Groups_Inc_Input = {
+  channel_id?: Maybe<Scalars['Int']>;
+  group_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "channel_groups" */
+export type Channel_Groups_Insert_Input = {
+  channel?: Maybe<Channel_Obj_Rel_Insert_Input>;
+  channel_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  group?: Maybe<Group_Obj_Rel_Insert_Input>;
+  group_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Channel_Groups_Max_Fields = {
+  __typename?: 'channel_groups_max_fields';
+  channel_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  group_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "channel_groups" */
+export type Channel_Groups_Max_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Channel_Groups_Min_Fields = {
+  __typename?: 'channel_groups_min_fields';
+  channel_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  group_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "channel_groups" */
+export type Channel_Groups_Min_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "channel_groups" */
+export type Channel_Groups_Mutation_Response = {
+  __typename?: 'channel_groups_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Channel_Groups>;
+};
+
+/** on conflict condition type for table "channel_groups" */
+export type Channel_Groups_On_Conflict = {
+  constraint: Channel_Groups_Constraint;
+  update_columns?: Array<Channel_Groups_Update_Column>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "channel_groups". */
+export type Channel_Groups_Order_By = {
+  channel?: Maybe<Channel_Order_By>;
+  channel_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  group?: Maybe<Group_Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: channel_groups */
+export type Channel_Groups_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "channel_groups" */
+export enum Channel_Groups_Select_Column {
+  /** column name */
+  ChannelId = 'channel_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  GroupId = 'group_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "channel_groups" */
+export type Channel_Groups_Set_Input = {
+  channel_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  group_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Channel_Groups_Stddev_Fields = {
+  __typename?: 'channel_groups_stddev_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  group_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "channel_groups" */
+export type Channel_Groups_Stddev_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Channel_Groups_Stddev_Pop_Fields = {
+  __typename?: 'channel_groups_stddev_pop_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  group_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "channel_groups" */
+export type Channel_Groups_Stddev_Pop_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Channel_Groups_Stddev_Samp_Fields = {
+  __typename?: 'channel_groups_stddev_samp_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  group_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "channel_groups" */
+export type Channel_Groups_Stddev_Samp_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Channel_Groups_Sum_Fields = {
+  __typename?: 'channel_groups_sum_fields';
+  channel_id?: Maybe<Scalars['Int']>;
+  group_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "channel_groups" */
+export type Channel_Groups_Sum_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** update columns of table "channel_groups" */
+export enum Channel_Groups_Update_Column {
+  /** column name */
+  ChannelId = 'channel_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  GroupId = 'group_id',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** aggregate var_pop on columns */
+export type Channel_Groups_Var_Pop_Fields = {
+  __typename?: 'channel_groups_var_pop_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  group_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "channel_groups" */
+export type Channel_Groups_Var_Pop_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Channel_Groups_Var_Samp_Fields = {
+  __typename?: 'channel_groups_var_samp_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  group_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "channel_groups" */
+export type Channel_Groups_Var_Samp_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Channel_Groups_Variance_Fields = {
+  __typename?: 'channel_groups_variance_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  group_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "channel_groups" */
+export type Channel_Groups_Variance_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  group_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** input type for incrementing numeric columns in table "channel" */
+export type Channel_Inc_Input = {
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "channel" */
+export type Channel_Insert_Input = {
+  channel_groups?: Maybe<Channel_Groups_Arr_Rel_Insert_Input>;
+  channel_users?: Maybe<Channel_Users_Arr_Rel_Insert_Input>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  owner?: Maybe<Auth_Users_Obj_Rel_Insert_Input>;
+  owner_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Channel_Max_Fields = {
+  __typename?: 'channel_max_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Channel_Min_Fields = {
+  __typename?: 'channel_min_fields';
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "channel" */
+export type Channel_Mutation_Response = {
+  __typename?: 'channel_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Channel>;
+};
+
+/** input type for inserting object relation for remote table "channel" */
+export type Channel_Obj_Rel_Insert_Input = {
+  data: Channel_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Channel_On_Conflict>;
+};
+
+/** on conflict condition type for table "channel" */
+export type Channel_On_Conflict = {
+  constraint: Channel_Constraint;
+  update_columns?: Array<Channel_Update_Column>;
+  where?: Maybe<Channel_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "channel". */
+export type Channel_Order_By = {
+  channel_groups_aggregate?: Maybe<Channel_Groups_Aggregate_Order_By>;
+  channel_users_aggregate?: Maybe<Channel_Users_Aggregate_Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  owner?: Maybe<Auth_Users_Order_By>;
+  owner_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: channel */
+export type Channel_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "channel" */
+export enum Channel_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "channel" */
+export type Channel_Set_Input = {
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Channel_Stddev_Fields = {
+  __typename?: 'channel_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Channel_Stddev_Pop_Fields = {
+  __typename?: 'channel_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Channel_Stddev_Samp_Fields = {
+  __typename?: 'channel_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Channel_Sum_Fields = {
+  __typename?: 'channel_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "channel" */
+export enum Channel_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** columns and relationships of "channel_users" */
+export type Channel_Users = {
+  __typename?: 'channel_users';
+  /** An object relationship */
+  channel: Channel;
+  channel_id: Scalars['Int'];
+  created_at: Scalars['timestamptz'];
+  id: Scalars['Int'];
+  updated_at: Scalars['timestamptz'];
+  /** An object relationship */
+  user: Auth_Users;
+  user_id: Scalars['Int'];
+};
+
+/** aggregated selection of "channel_users" */
+export type Channel_Users_Aggregate = {
+  __typename?: 'channel_users_aggregate';
+  aggregate?: Maybe<Channel_Users_Aggregate_Fields>;
+  nodes: Array<Channel_Users>;
+};
+
+/** aggregate fields of "channel_users" */
+export type Channel_Users_Aggregate_Fields = {
+  __typename?: 'channel_users_aggregate_fields';
+  avg?: Maybe<Channel_Users_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Channel_Users_Max_Fields>;
+  min?: Maybe<Channel_Users_Min_Fields>;
+  stddev?: Maybe<Channel_Users_Stddev_Fields>;
+  stddev_pop?: Maybe<Channel_Users_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Channel_Users_Stddev_Samp_Fields>;
+  sum?: Maybe<Channel_Users_Sum_Fields>;
+  var_pop?: Maybe<Channel_Users_Var_Pop_Fields>;
+  var_samp?: Maybe<Channel_Users_Var_Samp_Fields>;
+  variance?: Maybe<Channel_Users_Variance_Fields>;
+};
+
+
+/** aggregate fields of "channel_users" */
+export type Channel_Users_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Channel_Users_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "channel_users" */
+export type Channel_Users_Aggregate_Order_By = {
+  avg?: Maybe<Channel_Users_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Channel_Users_Max_Order_By>;
+  min?: Maybe<Channel_Users_Min_Order_By>;
+  stddev?: Maybe<Channel_Users_Stddev_Order_By>;
+  stddev_pop?: Maybe<Channel_Users_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Channel_Users_Stddev_Samp_Order_By>;
+  sum?: Maybe<Channel_Users_Sum_Order_By>;
+  var_pop?: Maybe<Channel_Users_Var_Pop_Order_By>;
+  var_samp?: Maybe<Channel_Users_Var_Samp_Order_By>;
+  variance?: Maybe<Channel_Users_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "channel_users" */
+export type Channel_Users_Arr_Rel_Insert_Input = {
+  data: Array<Channel_Users_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Channel_Users_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Channel_Users_Avg_Fields = {
+  __typename?: 'channel_users_avg_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "channel_users" */
+export type Channel_Users_Avg_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "channel_users". All fields are combined with a logical 'AND'. */
+export type Channel_Users_Bool_Exp = {
+  _and?: Maybe<Array<Channel_Users_Bool_Exp>>;
+  _not?: Maybe<Channel_Users_Bool_Exp>;
+  _or?: Maybe<Array<Channel_Users_Bool_Exp>>;
+  channel?: Maybe<Channel_Bool_Exp>;
+  channel_id?: Maybe<Int_Comparison_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+  user?: Maybe<Auth_Users_Bool_Exp>;
+  user_id?: Maybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "channel_users" */
+export enum Channel_Users_Constraint {
+  /** unique or primary key constraint */
+  ChannelUsersPkey = 'channel_users_pkey'
+}
+
+/** input type for incrementing numeric columns in table "channel_users" */
+export type Channel_Users_Inc_Input = {
+  channel_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "channel_users" */
+export type Channel_Users_Insert_Input = {
+  channel?: Maybe<Channel_Obj_Rel_Insert_Input>;
+  channel_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user?: Maybe<Auth_Users_Obj_Rel_Insert_Input>;
+  user_id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Channel_Users_Max_Fields = {
+  __typename?: 'channel_users_max_fields';
+  channel_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by max() on columns of table "channel_users" */
+export type Channel_Users_Max_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Channel_Users_Min_Fields = {
+  __typename?: 'channel_users_min_fields';
+  channel_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by min() on columns of table "channel_users" */
+export type Channel_Users_Min_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "channel_users" */
+export type Channel_Users_Mutation_Response = {
+  __typename?: 'channel_users_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Channel_Users>;
+};
+
+/** on conflict condition type for table "channel_users" */
+export type Channel_Users_On_Conflict = {
+  constraint: Channel_Users_Constraint;
+  update_columns?: Array<Channel_Users_Update_Column>;
+  where?: Maybe<Channel_Users_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "channel_users". */
+export type Channel_Users_Order_By = {
+  channel?: Maybe<Channel_Order_By>;
+  channel_id?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+  user?: Maybe<Auth_Users_Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: channel_users */
+export type Channel_Users_Pk_Columns_Input = {
+  id: Scalars['Int'];
+};
+
+/** select columns of table "channel_users" */
+export enum Channel_Users_Select_Column {
+  /** column name */
+  ChannelId = 'channel_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** input type for updating data in table "channel_users" */
+export type Channel_Users_Set_Input = {
+  channel_id?: Maybe<Scalars['Int']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['Int']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+  user_id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Channel_Users_Stddev_Fields = {
+  __typename?: 'channel_users_stddev_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "channel_users" */
+export type Channel_Users_Stddev_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Channel_Users_Stddev_Pop_Fields = {
+  __typename?: 'channel_users_stddev_pop_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "channel_users" */
+export type Channel_Users_Stddev_Pop_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Channel_Users_Stddev_Samp_Fields = {
+  __typename?: 'channel_users_stddev_samp_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "channel_users" */
+export type Channel_Users_Stddev_Samp_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Channel_Users_Sum_Fields = {
+  __typename?: 'channel_users_sum_fields';
+  channel_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+  user_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "channel_users" */
+export type Channel_Users_Sum_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** update columns of table "channel_users" */
+export enum Channel_Users_Update_Column {
+  /** column name */
+  ChannelId = 'channel_id',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  UpdatedAt = 'updated_at',
+  /** column name */
+  UserId = 'user_id'
+}
+
+/** aggregate var_pop on columns */
+export type Channel_Users_Var_Pop_Fields = {
+  __typename?: 'channel_users_var_pop_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "channel_users" */
+export type Channel_Users_Var_Pop_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Channel_Users_Var_Samp_Fields = {
+  __typename?: 'channel_users_var_samp_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "channel_users" */
+export type Channel_Users_Var_Samp_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Channel_Users_Variance_Fields = {
+  __typename?: 'channel_users_variance_fields';
+  channel_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+  user_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "channel_users" */
+export type Channel_Users_Variance_Order_By = {
+  channel_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  user_id?: Maybe<Order_By>;
+};
+
+/** aggregate var_pop on columns */
+export type Channel_Var_Pop_Fields = {
+  __typename?: 'channel_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Channel_Var_Samp_Fields = {
+  __typename?: 'channel_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Channel_Variance_Fields = {
+  __typename?: 'channel_variance_fields';
+  id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
 /** columns and relationships of "equipment" */
 export type Equipment = {
   __typename?: 'equipment';
@@ -1518,6 +2462,10 @@ export type File_Variance_Fields = {
 /** columns and relationships of "group" */
 export type Group = {
   __typename?: 'group';
+  /** An array relationship */
+  channel_groups: Array<Channel_Groups>;
+  /** An aggregate relationship */
+  channel_groups_aggregate: Channel_Groups_Aggregate;
   created_at: Scalars['timestamptz'];
   description: Scalars['String'];
   /** An array relationship */
@@ -1531,6 +2479,26 @@ export type Group = {
   sensitive_posts_aggregate: Sensitive_Post_Aggregate;
   title: Scalars['String'];
   updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "group" */
+export type GroupChannel_GroupsArgs = {
+  distinct_on?: Maybe<Array<Channel_Groups_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Groups_Order_By>>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
+};
+
+
+/** columns and relationships of "group" */
+export type GroupChannel_Groups_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Groups_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Groups_Order_By>>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
 };
 
 
@@ -1614,6 +2582,7 @@ export type Group_Bool_Exp = {
   _and?: Maybe<Array<Group_Bool_Exp>>;
   _not?: Maybe<Group_Bool_Exp>;
   _or?: Maybe<Array<Group_Bool_Exp>>;
+  channel_groups?: Maybe<Channel_Groups_Bool_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   description?: Maybe<String_Comparison_Exp>;
   group_xref_users?: Maybe<Group_Xref_Users_Bool_Exp>;
@@ -1636,6 +2605,7 @@ export type Group_Inc_Input = {
 
 /** input type for inserting data into table "group" */
 export type Group_Insert_Input = {
+  channel_groups?: Maybe<Channel_Groups_Arr_Rel_Insert_Input>;
   created_at?: Maybe<Scalars['timestamptz']>;
   description?: Maybe<Scalars['String']>;
   group_xref_users?: Maybe<Group_Xref_Users_Arr_Rel_Insert_Input>;
@@ -1690,6 +2660,7 @@ export type Group_On_Conflict = {
 
 /** Ordering options when selecting data from "group". */
 export type Group_Order_By = {
+  channel_groups_aggregate?: Maybe<Channel_Groups_Aggregate_Order_By>;
   created_at?: Maybe<Order_By>;
   description?: Maybe<Order_By>;
   group_xref_users_aggregate?: Maybe<Group_Xref_Users_Aggregate_Order_By>;
@@ -2991,11 +3962,39 @@ export type Mission_Element_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "mission_element" */
+export type Mission_Element_Aggregate_Order_By = {
+  avg?: Maybe<Mission_Element_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Mission_Element_Max_Order_By>;
+  min?: Maybe<Mission_Element_Min_Order_By>;
+  stddev?: Maybe<Mission_Element_Stddev_Order_By>;
+  stddev_pop?: Maybe<Mission_Element_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Mission_Element_Stddev_Samp_Order_By>;
+  sum?: Maybe<Mission_Element_Sum_Order_By>;
+  var_pop?: Maybe<Mission_Element_Var_Pop_Order_By>;
+  var_samp?: Maybe<Mission_Element_Var_Samp_Order_By>;
+  variance?: Maybe<Mission_Element_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "mission_element" */
+export type Mission_Element_Arr_Rel_Insert_Input = {
+  data: Array<Mission_Element_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Mission_Element_On_Conflict>;
+};
+
 /** aggregate avg on columns */
 export type Mission_Element_Avg_Fields = {
   __typename?: 'mission_element_avg_fields';
   id?: Maybe<Scalars['Float']>;
   tag_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "mission_element" */
+export type Mission_Element_Avg_Order_By = {
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
 };
 
 /** Boolean expression to filter rows from the table "mission_element". All fields are combined with a logical 'AND'. */
@@ -3357,6 +4356,16 @@ export type Mission_Element_Max_Fields = {
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
+/** order by max() on columns of table "mission_element" */
+export type Mission_Element_Max_Order_By = {
+  created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Mission_Element_Min_Fields = {
   __typename?: 'mission_element_min_fields';
@@ -3366,6 +4375,16 @@ export type Mission_Element_Min_Fields = {
   tag_id?: Maybe<Scalars['Int']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "mission_element" */
+export type Mission_Element_Min_Order_By = {
+  created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "mission_element" */
@@ -3441,11 +4460,23 @@ export type Mission_Element_Stddev_Fields = {
   tag_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev() on columns of table "mission_element" */
+export type Mission_Element_Stddev_Order_By = {
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
+};
+
 /** aggregate stddev_pop on columns */
 export type Mission_Element_Stddev_Pop_Fields = {
   __typename?: 'mission_element_stddev_pop_fields';
   id?: Maybe<Scalars['Float']>;
   tag_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "mission_element" */
+export type Mission_Element_Stddev_Pop_Order_By = {
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
 };
 
 /** aggregate stddev_samp on columns */
@@ -3455,11 +4486,23 @@ export type Mission_Element_Stddev_Samp_Fields = {
   tag_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by stddev_samp() on columns of table "mission_element" */
+export type Mission_Element_Stddev_Samp_Order_By = {
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
+};
+
 /** aggregate sum on columns */
 export type Mission_Element_Sum_Fields = {
   __typename?: 'mission_element_sum_fields';
   id?: Maybe<Scalars['Int']>;
   tag_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "mission_element" */
+export type Mission_Element_Sum_Order_By = {
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
 };
 
 /** update columns of table "mission_element" */
@@ -3485,6 +4528,12 @@ export type Mission_Element_Var_Pop_Fields = {
   tag_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_pop() on columns of table "mission_element" */
+export type Mission_Element_Var_Pop_Order_By = {
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
+};
+
 /** aggregate var_samp on columns */
 export type Mission_Element_Var_Samp_Fields = {
   __typename?: 'mission_element_var_samp_fields';
@@ -3492,11 +4541,23 @@ export type Mission_Element_Var_Samp_Fields = {
   tag_id?: Maybe<Scalars['Float']>;
 };
 
+/** order by var_samp() on columns of table "mission_element" */
+export type Mission_Element_Var_Samp_Order_By = {
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
+};
+
 /** aggregate variance on columns */
 export type Mission_Element_Variance_Fields = {
   __typename?: 'mission_element_variance_fields';
   id?: Maybe<Scalars['Float']>;
   tag_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "mission_element" */
+export type Mission_Element_Variance_Order_By = {
+  id?: Maybe<Order_By>;
+  tag_id?: Maybe<Order_By>;
 };
 
 /** input type for incrementing numeric columns in table "mission" */
@@ -3735,6 +4796,18 @@ export type Mutation_Root = {
   delete_auth_users?: Maybe<Auth_Users_Mutation_Response>;
   /** delete single row from the table: "auth.users" */
   delete_auth_users_by_pk?: Maybe<Auth_Users>;
+  /** delete data from the table: "channel" */
+  delete_channel?: Maybe<Channel_Mutation_Response>;
+  /** delete single row from the table: "channel" */
+  delete_channel_by_pk?: Maybe<Channel>;
+  /** delete data from the table: "channel_groups" */
+  delete_channel_groups?: Maybe<Channel_Groups_Mutation_Response>;
+  /** delete single row from the table: "channel_groups" */
+  delete_channel_groups_by_pk?: Maybe<Channel_Groups>;
+  /** delete data from the table: "channel_users" */
+  delete_channel_users?: Maybe<Channel_Users_Mutation_Response>;
+  /** delete single row from the table: "channel_users" */
+  delete_channel_users_by_pk?: Maybe<Channel_Users>;
   /** delete data from the table: "equipment" */
   delete_equipment?: Maybe<Equipment_Mutation_Response>;
   /** delete single row from the table: "equipment" */
@@ -3803,6 +4876,18 @@ export type Mutation_Root = {
   insert_auth_users?: Maybe<Auth_Users_Mutation_Response>;
   /** insert a single row into the table: "auth.users" */
   insert_auth_users_one?: Maybe<Auth_Users>;
+  /** insert data into the table: "channel" */
+  insert_channel?: Maybe<Channel_Mutation_Response>;
+  /** insert data into the table: "channel_groups" */
+  insert_channel_groups?: Maybe<Channel_Groups_Mutation_Response>;
+  /** insert a single row into the table: "channel_groups" */
+  insert_channel_groups_one?: Maybe<Channel_Groups>;
+  /** insert a single row into the table: "channel" */
+  insert_channel_one?: Maybe<Channel>;
+  /** insert data into the table: "channel_users" */
+  insert_channel_users?: Maybe<Channel_Users_Mutation_Response>;
+  /** insert a single row into the table: "channel_users" */
+  insert_channel_users_one?: Maybe<Channel_Users>;
   /** insert data into the table: "equipment" */
   insert_equipment?: Maybe<Equipment_Mutation_Response>;
   /** insert a single row into the table: "equipment" */
@@ -3873,6 +4958,18 @@ export type Mutation_Root = {
   update_auth_users?: Maybe<Auth_Users_Mutation_Response>;
   /** update single row of the table: "auth.users" */
   update_auth_users_by_pk?: Maybe<Auth_Users>;
+  /** update data of the table: "channel" */
+  update_channel?: Maybe<Channel_Mutation_Response>;
+  /** update single row of the table: "channel" */
+  update_channel_by_pk?: Maybe<Channel>;
+  /** update data of the table: "channel_groups" */
+  update_channel_groups?: Maybe<Channel_Groups_Mutation_Response>;
+  /** update single row of the table: "channel_groups" */
+  update_channel_groups_by_pk?: Maybe<Channel_Groups>;
+  /** update data of the table: "channel_users" */
+  update_channel_users?: Maybe<Channel_Users_Mutation_Response>;
+  /** update single row of the table: "channel_users" */
+  update_channel_users_by_pk?: Maybe<Channel_Users>;
   /** update data of the table: "equipment" */
   update_equipment?: Maybe<Equipment_Mutation_Response>;
   /** update single row of the table: "equipment" */
@@ -3948,6 +5045,42 @@ export type Mutation_RootDelete_Auth_UsersArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Auth_Users_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_ChannelArgs = {
+  where: Channel_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Channel_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Channel_GroupsArgs = {
+  where: Channel_Groups_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Channel_Groups_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Channel_UsersArgs = {
+  where: Channel_Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Channel_Users_By_PkArgs = {
   id: Scalars['Int'];
 };
 
@@ -4155,6 +5288,48 @@ export type Mutation_RootInsert_Auth_UsersArgs = {
 export type Mutation_RootInsert_Auth_Users_OneArgs = {
   object: Auth_Users_Insert_Input;
   on_conflict?: Maybe<Auth_Users_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_ChannelArgs = {
+  objects: Array<Channel_Insert_Input>;
+  on_conflict?: Maybe<Channel_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Channel_GroupsArgs = {
+  objects: Array<Channel_Groups_Insert_Input>;
+  on_conflict?: Maybe<Channel_Groups_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Channel_Groups_OneArgs = {
+  object: Channel_Groups_Insert_Input;
+  on_conflict?: Maybe<Channel_Groups_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Channel_OneArgs = {
+  object: Channel_Insert_Input;
+  on_conflict?: Maybe<Channel_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Channel_UsersArgs = {
+  objects: Array<Channel_Users_Insert_Input>;
+  on_conflict?: Maybe<Channel_Users_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Channel_Users_OneArgs = {
+  object: Channel_Users_Insert_Input;
+  on_conflict?: Maybe<Channel_Users_On_Conflict>;
 };
 
 
@@ -4407,6 +5582,54 @@ export type Mutation_RootUpdate_Auth_Users_By_PkArgs = {
   _inc?: Maybe<Auth_Users_Inc_Input>;
   _set?: Maybe<Auth_Users_Set_Input>;
   pk_columns: Auth_Users_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_ChannelArgs = {
+  _inc?: Maybe<Channel_Inc_Input>;
+  _set?: Maybe<Channel_Set_Input>;
+  where: Channel_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Channel_By_PkArgs = {
+  _inc?: Maybe<Channel_Inc_Input>;
+  _set?: Maybe<Channel_Set_Input>;
+  pk_columns: Channel_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Channel_GroupsArgs = {
+  _inc?: Maybe<Channel_Groups_Inc_Input>;
+  _set?: Maybe<Channel_Groups_Set_Input>;
+  where: Channel_Groups_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Channel_Groups_By_PkArgs = {
+  _inc?: Maybe<Channel_Groups_Inc_Input>;
+  _set?: Maybe<Channel_Groups_Set_Input>;
+  pk_columns: Channel_Groups_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Channel_UsersArgs = {
+  _inc?: Maybe<Channel_Users_Inc_Input>;
+  _set?: Maybe<Channel_Users_Set_Input>;
+  where: Channel_Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Channel_Users_By_PkArgs = {
+  _inc?: Maybe<Channel_Users_Inc_Input>;
+  _set?: Maybe<Channel_Users_Set_Input>;
+  pk_columns: Channel_Users_Pk_Columns_Input;
 };
 
 
@@ -5517,6 +6740,24 @@ export type Query_Root = {
   auth_users_aggregate: Auth_Users_Aggregate;
   /** fetch data from the table: "auth.users" using primary key columns */
   auth_users_by_pk?: Maybe<Auth_Users>;
+  /** fetch data from the table: "channel" */
+  channel: Array<Channel>;
+  /** fetch aggregated fields from the table: "channel" */
+  channel_aggregate: Channel_Aggregate;
+  /** fetch data from the table: "channel" using primary key columns */
+  channel_by_pk?: Maybe<Channel>;
+  /** An array relationship */
+  channel_groups: Array<Channel_Groups>;
+  /** An aggregate relationship */
+  channel_groups_aggregate: Channel_Groups_Aggregate;
+  /** fetch data from the table: "channel_groups" using primary key columns */
+  channel_groups_by_pk?: Maybe<Channel_Groups>;
+  /** An array relationship */
+  channel_users: Array<Channel_Users>;
+  /** An aggregate relationship */
+  channel_users_aggregate: Channel_Users_Aggregate;
+  /** fetch data from the table: "channel_users" using primary key columns */
+  channel_users_by_pk?: Maybe<Channel_Users>;
   /** An array relationship */
   equipment: Array<Equipment>;
   /** An aggregate relationship */
@@ -5635,6 +6876,75 @@ export type Query_RootAuth_Users_AggregateArgs = {
 
 
 export type Query_RootAuth_Users_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Query_RootChannelArgs = {
+  distinct_on?: Maybe<Array<Channel_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Order_By>>;
+  where?: Maybe<Channel_Bool_Exp>;
+};
+
+
+export type Query_RootChannel_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Order_By>>;
+  where?: Maybe<Channel_Bool_Exp>;
+};
+
+
+export type Query_RootChannel_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Query_RootChannel_GroupsArgs = {
+  distinct_on?: Maybe<Array<Channel_Groups_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Groups_Order_By>>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
+};
+
+
+export type Query_RootChannel_Groups_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Groups_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Groups_Order_By>>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
+};
+
+
+export type Query_RootChannel_Groups_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Query_RootChannel_UsersArgs = {
+  distinct_on?: Maybe<Array<Channel_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Users_Order_By>>;
+  where?: Maybe<Channel_Users_Bool_Exp>;
+};
+
+
+export type Query_RootChannel_Users_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Users_Order_By>>;
+  where?: Maybe<Channel_Users_Bool_Exp>;
+};
+
+
+export type Query_RootChannel_Users_By_PkArgs = {
   id: Scalars['Int'];
 };
 
@@ -6345,6 +7655,24 @@ export type Subscription_Root = {
   auth_users_aggregate: Auth_Users_Aggregate;
   /** fetch data from the table: "auth.users" using primary key columns */
   auth_users_by_pk?: Maybe<Auth_Users>;
+  /** fetch data from the table: "channel" */
+  channel: Array<Channel>;
+  /** fetch aggregated fields from the table: "channel" */
+  channel_aggregate: Channel_Aggregate;
+  /** fetch data from the table: "channel" using primary key columns */
+  channel_by_pk?: Maybe<Channel>;
+  /** An array relationship */
+  channel_groups: Array<Channel_Groups>;
+  /** An aggregate relationship */
+  channel_groups_aggregate: Channel_Groups_Aggregate;
+  /** fetch data from the table: "channel_groups" using primary key columns */
+  channel_groups_by_pk?: Maybe<Channel_Groups>;
+  /** An array relationship */
+  channel_users: Array<Channel_Users>;
+  /** An aggregate relationship */
+  channel_users_aggregate: Channel_Users_Aggregate;
+  /** fetch data from the table: "channel_users" using primary key columns */
+  channel_users_by_pk?: Maybe<Channel_Users>;
   /** An array relationship */
   equipment: Array<Equipment>;
   /** An aggregate relationship */
@@ -6463,6 +7791,75 @@ export type Subscription_RootAuth_Users_AggregateArgs = {
 
 
 export type Subscription_RootAuth_Users_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Subscription_RootChannelArgs = {
+  distinct_on?: Maybe<Array<Channel_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Order_By>>;
+  where?: Maybe<Channel_Bool_Exp>;
+};
+
+
+export type Subscription_RootChannel_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Order_By>>;
+  where?: Maybe<Channel_Bool_Exp>;
+};
+
+
+export type Subscription_RootChannel_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Subscription_RootChannel_GroupsArgs = {
+  distinct_on?: Maybe<Array<Channel_Groups_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Groups_Order_By>>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
+};
+
+
+export type Subscription_RootChannel_Groups_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Groups_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Groups_Order_By>>;
+  where?: Maybe<Channel_Groups_Bool_Exp>;
+};
+
+
+export type Subscription_RootChannel_Groups_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+export type Subscription_RootChannel_UsersArgs = {
+  distinct_on?: Maybe<Array<Channel_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Users_Order_By>>;
+  where?: Maybe<Channel_Users_Bool_Exp>;
+};
+
+
+export type Subscription_RootChannel_Users_AggregateArgs = {
+  distinct_on?: Maybe<Array<Channel_Users_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Channel_Users_Order_By>>;
+  where?: Maybe<Channel_Users_Bool_Exp>;
+};
+
+
+export type Subscription_RootChannel_Users_By_PkArgs = {
   id: Scalars['Int'];
 };
 
@@ -6850,6 +8247,10 @@ export type Tag = {
   experiments_aggregate: Experiment_Aggregate;
   id: Scalars['Int'];
   /** An array relationship */
+  mission_elements: Array<Mission_Element>;
+  /** An aggregate relationship */
+  mission_elements_aggregate: Mission_Element_Aggregate;
+  /** An array relationship */
   post_tags: Array<Post_Tags>;
   /** An aggregate relationship */
   post_tags_aggregate: Post_Tags_Aggregate;
@@ -6898,6 +8299,26 @@ export type TagExperiments_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Experiment_Order_By>>;
   where?: Maybe<Experiment_Bool_Exp>;
+};
+
+
+/** columns and relationships of "tag" */
+export type TagMission_ElementsArgs = {
+  distinct_on?: Maybe<Array<Mission_Element_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Mission_Element_Order_By>>;
+  where?: Maybe<Mission_Element_Bool_Exp>;
+};
+
+
+/** columns and relationships of "tag" */
+export type TagMission_Elements_AggregateArgs = {
+  distinct_on?: Maybe<Array<Mission_Element_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Mission_Element_Order_By>>;
+  where?: Maybe<Mission_Element_Bool_Exp>;
 };
 
 
@@ -6996,6 +8417,7 @@ export type Tag_Bool_Exp = {
   equipment?: Maybe<Equipment_Bool_Exp>;
   experiments?: Maybe<Experiment_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
+  mission_elements?: Maybe<Mission_Element_Bool_Exp>;
   post_tags?: Maybe<Post_Tags_Bool_Exp>;
   tag_category?: Maybe<Tag_Category_Bool_Exp>;
   tag_category_id?: Maybe<Int_Comparison_Exp>;
@@ -7253,6 +8675,7 @@ export type Tag_Insert_Input = {
   equipment?: Maybe<Equipment_Arr_Rel_Insert_Input>;
   experiments?: Maybe<Experiment_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['Int']>;
+  mission_elements?: Maybe<Mission_Element_Arr_Rel_Insert_Input>;
   post_tags?: Maybe<Post_Tags_Arr_Rel_Insert_Input>;
   tag_category?: Maybe<Tag_Category_Obj_Rel_Insert_Input>;
   tag_category_id?: Maybe<Scalars['Int']>;
@@ -7337,6 +8760,7 @@ export type Tag_Order_By = {
   equipment_aggregate?: Maybe<Equipment_Aggregate_Order_By>;
   experiments_aggregate?: Maybe<Experiment_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
+  mission_elements_aggregate?: Maybe<Mission_Element_Aggregate_Order_By>;
   post_tags_aggregate?: Maybe<Post_Tags_Aggregate_Order_By>;
   tag_category?: Maybe<Tag_Category_Order_By>;
   tag_category_id?: Maybe<Order_By>;

@@ -1,0 +1,31 @@
+table:
+  name: channel_groups
+  schema: public
+object_relationships:
+- name: channel
+  using:
+    foreign_key_constraint_on: channel_id
+- name: group
+  using:
+    foreign_key_constraint_on: group_id
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - channel_id
+    - group_id
+    - id
+    - created_at
+    - updated_at
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - channel_id
+    - group_id
+    - id
+    - created_at
+    - updated_at
+    filter: {}
+  role: user

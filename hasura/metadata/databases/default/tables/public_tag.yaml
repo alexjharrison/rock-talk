@@ -20,6 +20,13 @@ array_relationships:
       table:
         name: experiment
         schema: public
+- name: mission_elements
+  using:
+    foreign_key_constraint_on:
+      column: tag_id
+      table:
+        name: mission_element
+        schema: public
 - name: post_tags
   using:
     foreign_key_constraint_on:

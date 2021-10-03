@@ -1,4 +1,7 @@
 - "!include auth_users.yaml"
+- "!include public_channel.yaml"
+- "!include public_channel_groups.yaml"
+- "!include public_channel_users.yaml"
 - "!include public_equipment.yaml"
 - "!include public_experiment.yaml"
 - "!include public_experiment_type.yaml"

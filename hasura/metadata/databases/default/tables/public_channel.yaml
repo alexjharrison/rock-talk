@@ -1,0 +1,45 @@
+table:
+  name: channel
+  schema: public
+object_relationships:
+- name: owner
+  using:
+    foreign_key_constraint_on: owner_id
+array_relationships:
+- name: channel_groups
+  using:
+    foreign_key_constraint_on:
+      column: channel_id
+      table:
+        name: channel_groups
+        schema: public
+- name: channel_users
+  using:
+    foreign_key_constraint_on:
+      column: channel_id
+      table:
+        name: channel_users
+        schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      owner_id:
+        _eq: X-Hasura-User-Id
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - title
+    - owner_id
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - id
+    - created_at
+    - updated_at
+    - title
+    - owner_id
+    filter: {}
+  role: user

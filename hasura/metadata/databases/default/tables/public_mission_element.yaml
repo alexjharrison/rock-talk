@@ -16,10 +16,11 @@ array_relationships:
 select_permissions:
 - permission:
     columns:
-    - id
     - created_at
-    - updated_at
-    - title
     - description
+    - id
+    - tag_id
+    - title
+    - updated_at
     filter: {}
   role: user

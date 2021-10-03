@@ -2,6 +2,13 @@ table:
   name: group
   schema: public
 array_relationships:
+- name: channel_groups
+  using:
+    foreign_key_constraint_on:
+      column: group_id
+      table:
+        name: channel_groups
+        schema: public
 - name: group_xref_users
   using:
     foreign_key_constraint_on:
