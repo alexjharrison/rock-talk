@@ -108,6 +108,10 @@ export type Auth_Users = {
   groups_aggregate: Group_Xref_Users_Aggregate;
   id: Scalars['Int'];
   last_name: Scalars['String'];
+  /** An array relationship */
+  posts: Array<Post>;
+  /** An aggregate relationship */
+  posts_aggregate: Post_Aggregate;
 };
 
 
@@ -128,6 +132,26 @@ export type Auth_UsersGroups_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Group_Xref_Users_Order_By>>;
   where?: Maybe<Group_Xref_Users_Bool_Exp>;
+};
+
+
+/** columns and relationships of "auth.users" */
+export type Auth_UsersPostsArgs = {
+  distinct_on?: Maybe<Array<Post_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Post_Order_By>>;
+  where?: Maybe<Post_Bool_Exp>;
+};
+
+
+/** columns and relationships of "auth.users" */
+export type Auth_UsersPosts_AggregateArgs = {
+  distinct_on?: Maybe<Array<Post_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Post_Order_By>>;
+  where?: Maybe<Post_Bool_Exp>;
 };
 
 /** aggregated selection of "auth.users" */
@@ -177,6 +201,7 @@ export type Auth_Users_Bool_Exp = {
   groups?: Maybe<Group_Xref_Users_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   last_name?: Maybe<String_Comparison_Exp>;
+  posts?: Maybe<Post_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "auth.users" */
@@ -202,6 +227,7 @@ export type Auth_Users_Insert_Input = {
   groups?: Maybe<Group_Xref_Users_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['Int']>;
   last_name?: Maybe<Scalars['String']>;
+  posts?: Maybe<Post_Arr_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -255,6 +281,7 @@ export type Auth_Users_Order_By = {
   groups_aggregate?: Maybe<Group_Xref_Users_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
   last_name?: Maybe<Order_By>;
+  posts_aggregate?: Maybe<Post_Aggregate_Order_By>;
 };
 
 /** primary key columns input for table: auth_users */
@@ -8960,6 +8987,16 @@ export type RegisterMutationVariables = Exact<{
 
 
 export type RegisterMutation = { __typename?: 'mutation_root', register?: Maybe<{ __typename?: 'RegisterResult', token: string }> };
+
+export type ChannelsQueryVariables = Exact<{
+  distinct_on?: Maybe<Array<Channel_Select_Column> | Channel_Select_Column>;
+  limit?: Maybe<Scalars['Int']>;
+  where?: Maybe<Channel_Bool_Exp>;
+  order_by?: Maybe<Array<Channel_Order_By> | Channel_Order_By>;
+}>;
+
+
+export type ChannelsQuery = { __typename?: 'query_root', channel: Array<{ __typename?: 'channel', id: number, title: string, channel_groups: Array<{ __typename?: 'channel_groups', id: number, group: { __typename?: 'group', id: number, title: string } }>, channel_users: Array<{ __typename?: 'channel_users', id: number, user: { __typename?: 'auth_users', first_name: string, last_name: string, email: string, id: number } }> }> };
 
 export type FileFragmentFragment = { __typename?: 'file', created_at: any, filename: string, filesize: number, id: any, mimetype: string, updated_at: any, uploaded_by: number };
 

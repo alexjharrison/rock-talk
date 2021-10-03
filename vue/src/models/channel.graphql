@@ -1,0 +1,32 @@
+query Channels(
+  $distinct_on: [channel_select_column!]
+  $limit: Int
+  $where: channel_bool_exp
+  $order_by: [channel_order_by!]
+) {
+  channel(
+    distinct_on: $distinct_on
+    limit: $limit
+    where: $where
+    order_by: $order_by
+  ) {
+    id
+    title
+    channel_groups {
+      id
+      group {
+        id
+        title
+      }
+    }
+    channel_users {
+      id
+      user {
+        first_name
+        last_name
+        email
+        id
+      }
+    }
+  }
+}
