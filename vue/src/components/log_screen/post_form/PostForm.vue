@@ -24,6 +24,7 @@
         <FieldAdder
           @add:tag="object.post_tags?.data.push({ tag_id: $event })"
         />
+
         <Chip
           v-for="tag in tagChips"
           :key="tag.id"
@@ -34,11 +35,27 @@
         />
       </div>
 
-      <p-button
-        type="submit"
-        label="submit"
-        class="mt-1 p-button-sm align-self-end"
-      />
+      <div class="flex justify-content-between mt-2">
+        <div class="flex align-items-center">
+          <FileUpload
+            choose-label="Upload File"
+            class="p-button-sm"
+            mode="basic"
+            name="file"
+            url="/files/upload"
+            :auto="true"
+            @before-send="addToken"
+            @upload="handleFileUpload"
+          />
+          <span class="ml-4"> {{ filename }} </span>
+        </div>
+
+        <p-button
+          type="submit"
+          label="submit"
+          class="mt-1 p-button-sm align-self-end"
+        />
+      </div>
     </form>
   </section>
 </template>
@@ -48,6 +65,7 @@ import { ref, computed } from "vue";
 import Textarea from "primevue/textarea";
 import Calendar from "primevue/calendar";
 import Chip from "primevue/chip";
+import FileUpload from "primevue/fileupload";
 import {
   Post_Insert_Input,
   useCreatePostMutation,
@@ -55,6 +73,7 @@ import {
 } from "../../../api";
 import { useToast } from "primevue/usetoast";
 import FieldAdder from "./FieldAdder.vue";
+import { useAuth } from "../../../hooks/auth";
 
 const toaster = useToast();
 const isEditing = ref(false);
@@ -103,6 +122,23 @@ const handleSubmit = async () => {
   }
   console.log({ data, error });
 };
+
+const filename = ref("");
+const handleFileUpload = (event: { xhr: XMLHttpRequest; files: File[] }) => {
+  console.log(event);
+  toaster.add({
+    summary: "File Uploaded",
+    life: 5000,
+    severity: "success",
+    detail: event.files[0].name + " created",
+  });
+  filename.value = event.files[0].name;
+};
+
+const { token } = useAuth();
+
+const addToken = ({ xhr }: { xhr: XMLHttpRequest }) =>
+  xhr.setRequestHeader("Authorization", `Bearer ${token.value}`);
 </script>
 
 <style lang="scss" scoped>
