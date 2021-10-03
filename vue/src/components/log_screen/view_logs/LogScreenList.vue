@@ -1,6 +1,14 @@
 <template>
   <section class="p-2">
-    <h1 class="mb-4">View Logs</h1>
+    <div class="flex justify-content-between align-items-center">
+      <h1 class="mb-4">View Logs</h1>
+      <p-button
+        label="Lock posts"
+        class="p-button-warning"
+        @click="confirmLock()"
+      />
+      <!-- <ConfirmDialog /> -->
+    </div>
     <div class="px-3">
       <div class="p-inputgroup">
         <span class="w-full p-float-label p-input-icon-left">
@@ -45,9 +53,11 @@ import { ref, watchEffect, nextTick } from "vue";
 import InputText from "primevue/inputtext";
 import ScrollPanel from "primevue/scrollpanel";
 import AdvancedSearch from "./AdvancedSearch.vue";
-import { usePostsStreamSubscription } from "../../../api";
 import { useCurrentPosts } from "../../../hooks/posts";
 import Loading from "./Loading.vue";
+import { useToast } from "primevue/usetoast";
+import { useConfirm } from "primevue/useconfirm";
+import ConfirmDialog from "primevue/confirmdialog";
 
 const searchInput = ref("");
 const isAdvancedShowing = ref(false);
@@ -64,6 +74,32 @@ watchEffect(() => {
     });
   }
 });
+
+// const confirm = useConfirm();
+// const toaster = useToast();
+// const confirmLock = () => {
+//   confirm.require({
+//     message: "Are you ready to confirm your logs to date",
+//     header: "Confirmation",
+//     icon: "pi pi-exclamation-triangle",
+//     accept: () => {
+//       toaster.add({
+//         severity: "info",
+//         summary: "Confirmed",
+//         detail: "Logs have been confirmed",
+//         life: 3000,
+//       });
+//     },
+//     reject: () => {
+//       toaster.add({
+//         severity: "warn",
+//         summary: "Canceled",
+//         detail: "You may continue editing",
+//         life: 3000,
+//       });
+//     },
+//   });
+// };
 </script>
 
 <style lang="scss" scoped>
