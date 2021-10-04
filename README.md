@@ -1,4 +1,4 @@
-# Hackathon Starter
+# Rock Talk
 
 Contains docker images for 
 
