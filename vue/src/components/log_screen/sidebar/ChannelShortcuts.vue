@@ -6,7 +6,7 @@
         :label="channel.title"
         :class="channel.id === selectedChannelId ? 'p-button-outlined' : ''"
         class="p-button-warning p-button-sm"
-        @click="selectedChannelId = channel.id"
+        @click="updateChannelId(channel.id)"
       />
     </div>
   </div>
@@ -14,6 +14,10 @@
 
 <script setup lang="ts">
 import { useCurrentPosts } from "../../../hooks/posts";
+
+const updateChannelId = (id: number) => {
+  selectedChannelId.value = id;
+};
 
 const { myChannels, selectedChannelId } = useCurrentPosts();
 </script>
