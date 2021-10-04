@@ -11,15 +11,6 @@ array_relationships:
       remote_table:
         name: group_xref_users
         schema: public
-- name: posts
-  using:
-    manual_configuration:
-      column_mapping:
-        id: user_id
-      insertion_order: null
-      remote_table:
-        name: post
-        schema: public
 select_permissions:
 - permission:
     columns:

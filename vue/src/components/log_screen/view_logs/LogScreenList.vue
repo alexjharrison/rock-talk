@@ -2,11 +2,7 @@
   <section class="p-2">
     <div class="flex justify-content-between align-items-center">
       <h1 class="mb-4">View Logs</h1>
-      <p-button
-        label="Lock posts"
-        class="p-button-warning"
-        @click="confirmLock()"
-      />
+      <p-button label="Lock posts" class="p-button-warning" />
       <!-- <ConfirmDialog /> -->
     </div>
     <div class="px-3">

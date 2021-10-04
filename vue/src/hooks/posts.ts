@@ -1,9 +1,4 @@
-import {
-  ChannelsQuery,
-  Order_By,
-  useChannelsQuery,
-  usePostsStreamSubscription,
-} from "../api";
+import { Order_By, useChannelsQuery, usePostsStreamSubscription } from "../api";
 import { computed, ref, watchEffect } from "vue";
 import { useAuth } from "./auth";
 
@@ -29,6 +24,8 @@ export const useCurrentPosts = () => {
   const selectedUserIds = ref<number[]>([]);
 
   watchEffect(() => {
+    selectedChannelId.value = myChannels.value?.channel[0].id;
+    console.log({ selectedChannelId });
     selectedGroupIds.value =
       myChannels.value?.channel
         .map(({ channel_groups }) => channel_groups.map(({ id }) => id))
@@ -39,5 +36,11 @@ export const useCurrentPosts = () => {
         .flat() || [];
   });
 
-  return { currentPosts, myChannels, selectedChannelId };
+  return {
+    currentPosts,
+    myChannels,
+    selectedChannelId,
+    selectedGroupIds,
+    selectedUserIds,
+  };
 };

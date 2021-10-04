@@ -111,10 +111,6 @@ export type Auth_Users = {
   groups_aggregate: Group_Xref_Users_Aggregate;
   id: Scalars['Int'];
   last_name: Scalars['String'];
-  /** An array relationship */
-  posts: Array<Post>;
-  /** An aggregate relationship */
-  posts_aggregate: Post_Aggregate;
 };
 
 
@@ -135,26 +131,6 @@ export type Auth_UsersGroups_AggregateArgs = {
   offset?: Maybe<Scalars['Int']>;
   order_by?: Maybe<Array<Group_Xref_Users_Order_By>>;
   where?: Maybe<Group_Xref_Users_Bool_Exp>;
-};
-
-
-/** columns and relationships of "auth.users" */
-export type Auth_UsersPostsArgs = {
-  distinct_on?: Maybe<Array<Post_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Post_Order_By>>;
-  where?: Maybe<Post_Bool_Exp>;
-};
-
-
-/** columns and relationships of "auth.users" */
-export type Auth_UsersPosts_AggregateArgs = {
-  distinct_on?: Maybe<Array<Post_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Post_Order_By>>;
-  where?: Maybe<Post_Bool_Exp>;
 };
 
 /** aggregated selection of "auth.users" */
@@ -204,7 +180,6 @@ export type Auth_Users_Bool_Exp = {
   groups?: Maybe<Group_Xref_Users_Bool_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
   last_name?: Maybe<String_Comparison_Exp>;
-  posts?: Maybe<Post_Bool_Exp>;
 };
 
 /** unique or primary key constraints on table "auth.users" */
@@ -230,7 +205,6 @@ export type Auth_Users_Insert_Input = {
   groups?: Maybe<Group_Xref_Users_Arr_Rel_Insert_Input>;
   id?: Maybe<Scalars['Int']>;
   last_name?: Maybe<Scalars['String']>;
-  posts?: Maybe<Post_Arr_Rel_Insert_Input>;
 };
 
 /** aggregate max on columns */
@@ -284,7 +258,6 @@ export type Auth_Users_Order_By = {
   groups_aggregate?: Maybe<Group_Xref_Users_Aggregate_Order_By>;
   id?: Maybe<Order_By>;
   last_name?: Maybe<Order_By>;
-  posts_aggregate?: Maybe<Post_Aggregate_Order_By>;
 };
 
 /** primary key columns input for table: auth_users */
@@ -9008,6 +8981,16 @@ export type FilesStreamSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 export type FilesStreamSubscription = { __typename?: 'subscription_root', file: Array<{ __typename?: 'file', created_at: any, filename: string, filesize: number, id: any, mimetype: string, updated_at: any, uploaded_by: number }> };
 
+export type GroupsQueryVariables = Exact<{
+  distinct_on?: Maybe<Array<Group_Select_Column> | Group_Select_Column>;
+  limit?: Maybe<Scalars['Int']>;
+  where?: Maybe<Group_Bool_Exp>;
+  order_by?: Maybe<Array<Group_Order_By> | Group_Order_By>;
+}>;
+
+
+export type GroupsQuery = { __typename?: 'query_root', group: Array<{ __typename?: 'group', id: number, title: string }> };
+
 export type MetaQueryVariables = Exact<{
   distinct_on?: Maybe<Array<Meta_Key_Select_Column> | Meta_Key_Select_Column>;
   limit?: Maybe<Scalars['Int']>;
@@ -9257,6 +9240,23 @@ export const FilesStreamDocument = gql`
 
 export function useFilesStreamSubscription<R = FilesStreamSubscription>(options: Omit<Urql.UseSubscriptionArgs<never, FilesStreamSubscriptionVariables>, 'query'> = {}, handler?: Urql.SubscriptionHandlerArg<FilesStreamSubscription, R>) {
   return Urql.useSubscription<FilesStreamSubscription, R, FilesStreamSubscriptionVariables>({ query: FilesStreamDocument, ...options }, handler);
+};
+export const GroupsDocument = gql`
+    query Groups($distinct_on: [group_select_column!], $limit: Int, $where: group_bool_exp, $order_by: [group_order_by!]) {
+  group(
+    distinct_on: $distinct_on
+    limit: $limit
+    where: $where
+    order_by: $order_by
+  ) {
+    id
+    title
+  }
+}
+    `;
+
+export function useGroupsQuery(options: Omit<Urql.UseQueryArgs<never, GroupsQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GroupsQuery>({ query: GroupsDocument, ...options });
 };
 export const MetaDocument = gql`
     query Meta($distinct_on: [meta_key_select_column!], $limit: Int, $where: meta_key_bool_exp, $order_by: [meta_key_order_by!]) {

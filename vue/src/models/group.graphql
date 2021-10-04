@@ -1,0 +1,16 @@
+query Groups(
+  $distinct_on: [group_select_column!]
+  $limit: Int
+  $where: group_bool_exp
+  $order_by: [group_order_by!]
+) {
+  group(
+    distinct_on: $distinct_on
+    limit: $limit
+    where: $where
+    order_by: $order_by
+  ) {
+    id
+    title
+  }
+}
