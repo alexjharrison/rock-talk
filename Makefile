@@ -25,7 +25,10 @@ seed:
 		--from-table post_tags \
 		--from-table sensitive_post \
 		--from-table tag \
-		--from-table tag_category 
+		--from-table tag_category \
+		--from-table channel \
+		--from-table channel_groups \
+		--from-table channel_users
 
 migrate-seed:
 	rm -rf hasura/migrations/default
